@@ -1,0 +1,63 @@
+
+
+
+<head>
+<title> </title>
+
+
+<style>
+.mydiv {
+
+            <!--Width , Height and Position Setting-->
+            width: 70%;
+            height: 400px;
+            position: absolute;
+            <!--/Width , Height and Position Setting-->
+
+
+
+           <!--For Adjusting in Middle-->
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%); 
+           <!--/For Adjusting in Middle-->
+
+
+
+            <!--Background Image and Background Size-->
+            background-image: url(../../Models/img4.jpg);
+            background-size: 100% 100%;
+            <!--/Background Image and Background Size-->
+
+
+
+            animation: slider 9s infinite linear;
+<!-- animation: Animation_Name , Animation Duration , Loop(Which is infinite) , Speed(Which is Linear/Constant) -->
+
+
+
+<!-- @@Keyframes , animation_name {block of code}-->
+@@keyframes slider
+        {
+            0%{background-image:url(../../Models/ToyotaImage1.jpg);}
+
+            35%{background-image:url(../../Models/ToyotaImage2.jpg);}
+
+            75%{background-image:url(../../Models/ToyotaImage3.jpg);}
+        }
+
+</style>
+</head>
+
+
+<body>
+    <h1> Toyota Corolla</h1>
+    <div class="mydiv"></div>
+</body>
+
+
+
+
+
+
+

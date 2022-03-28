@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+namespace WebApplication1.Controllers
+{
+    public class HomeController : Controller
+    {
+        CompanyEntities obj = new CompanyEntities();
+        public ActionResult Index()
+        {
+            List<EmployeeTable> emp = obj.EmployeeTables.ToList();
+            List<ModelView> evmList = emp.Select(model => new ModelView
+            {
+               Emp_ID = model.Emp_ID,
+               Emp_Name = model.Emp_Name,
+               Emp_Age = model.Emp_Age,
+               Emp_DOB = model.Emp_DOB,
+               Emp_Image = model.Emp_Image,
+               Dep_ID = model.DepartmentTable.Dep_ID,
+               Dep_Name  = model.DepartmentTable.Dep_Name
+            }).ToList(); 
+            return View(evmList);
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}

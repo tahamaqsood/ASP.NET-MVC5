@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication16.Models;
+
+
+namespace WebApplication15.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            Car Civic = new Car();
+            Civic.Name = "Civic";
+            Civic.Price = 12000000;
+            Civic.Model = "Toyota Corolla";
+            ViewBag.Civic = Civic;
+
+            Car Hyundai = new Car();
+            Hyundai.Name = "Hyundai";
+            Hyundai.Price = 10000000;
+            Hyundai.Model = "Grand Starex";
+            ViewBag.Hyundai = Hyundai;
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult GrandStarex()
+        {
+            return View();
+        }
+        public ActionResult Toyota()
+        {
+            return View();
+        }
+    }
+}

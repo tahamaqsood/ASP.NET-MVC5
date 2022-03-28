@@ -1,0 +1,39 @@
+<!--For Heading-->
+<div class="jumbotron" style="background:Black;">
+    <h2 class="text" style="text-align:center;">CRUD APPLICATION FOR HOSPITAL MANAGEMENT</h2>
+
+</div>
+
+
+
+<!--For Rotating Animation on Text-->
+<style>
+    .text
+    {
+        color:royalblue;
+        font-size:40px;
+        font-weight:500;
+        letter-spacing:5px;
+        margin-bottom:20PX;
+        position:relative;
+        animation: text 9s 1 forwards;
+    }
+
+    @@keyframes text
+    {
+        0%
+        { 
+            color:gray;
+            transform:rotateY(-90deg);
+            filter:blur(10px);
+        }
+        50%
+        {
+            transform:rotateY(90deg);
+        }
+        85%
+        {
+            margin-bottom: -40px;
+        }
+    }
+</style>

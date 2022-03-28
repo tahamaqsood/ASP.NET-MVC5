@@ -1,0 +1,89 @@
+@model WebApplication1.Models.Employees
+
+@using (Html.BeginForm())
+{
+    <!--For ID-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.ID) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.ID,"",new
+   {
+       @class = "form-control",
+       placeholder="Enter ID"
+   })
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model=>model.ID,"",new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Name-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Name) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Name, "", new
+   {
+       @class = "form-control",
+       placeholder = "Enter Name"
+   })
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Name, "", new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Age-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Age) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Age, "", new
+   {
+       @class = "form-control",
+       placeholder = "Enter Age"
+   })
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Age, "", new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Gender-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Gender) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Gender, "", new
+   {
+       @class = "form-control",
+       placeholder = "Enter Gender"
+   })
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Gender, "", new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Submit Button-->
+    <input type="submit" value="Submit" class="btn btn-info" />
+}
+
+@Html.Raw(ViewData["Msg"])

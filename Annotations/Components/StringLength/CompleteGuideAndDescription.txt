@@ -1,0 +1,110 @@
+
+=============
+StringLength:
+=============
+
+=> You can use this Annotation to speacify the Minimum and Maximum lengths
+of a string field.
+
+
+=> Whenever user is out of specified range which is set for these fields
+through StringLength Annotation, then the Validation error message is displayed.
+
+
+=> This Annotation is very useful in such scenarios where you want user to not
+enter more than 20 characters nor less than 5 characters in text field.
+
+
+-------
+Syntax:
+-------
+
+=> [StringLength(<max_length> , MinimumLength=<min_length>)]
+
+=> [StringLength(20 , MinimumLength=5)]
+
+
+-------------------------------------------
+Syntax For Displaying Custom Error Message:
+-------------------------------------------
+
+=> [StringLength(<max_length> , MinimumLength=<min_length> , ErrorMessage="Custom Error message")]
+
+=> [StringLength(20 , MinimumLength=5 , ErrorMessage="Name should be in between 5 to 20 characters")]
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+=============================
+On Employess.cs(Model Class):
+=============================
+
+    public class Employees
+    {
+        //For ID
+        [Required (ErrorMessage ="ID is Mandatory")]    
+        public int ID { get; set; }
+
+        //For Name
+        [Required(ErrorMessage = "You cannot leave name field empty")]
+        [StringLength(20, MinimumLength = 5)]
+        public string Name { get; set; }
+
+        //For Age
+        [Required(ErrorMessage = "Age is Mandatory")]
+        public int Age { get; set; }
+
+        //For Gender
+        [Required(ErrorMessage = "Gender is Mandatory")]
+        public string Gender { get; set; }
+    }
+
+* Now, run your project and it will show you default error message of StringLength
+if you enter either more than 20 characters or less than 5 characters in 
+name field.  
+
+Note: If you want to display your custom error message instead of default error message,
+then use Syntax of Custom error message. 
+
+------------
+For Example:
+------------
+
+=============================
+On Employess.cs(Model Class):
+=============================
+
+    public class Employees
+    {
+        //For ID
+        [Required (ErrorMessage ="ID is Mandatory")]    
+        public int ID { get; set; }
+
+        //For Name
+        [Required(ErrorMessage = "You cannot leave name field empty")]
+        [StringLength(20, MinimumLength = 5,ErrorMessage ="Name should be in between 50 to 20 characters")]
+        public string Name { get; set; }
+
+        //For Age
+        [Required(ErrorMessage = "Age is Mandatory")]
+        public int Age { get; set; }
+
+        //For Gender
+        [Required(ErrorMessage = "Gender is Mandatory")]
+        public string Gender { get; set; }
+    }
+
+
+Note: You can use multiple Annotations for each property/field.
+
+
+
+
+
+
+
+
+
+

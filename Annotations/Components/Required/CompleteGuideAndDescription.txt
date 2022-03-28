@@ -1,0 +1,386 @@
+
+
+=========
+Required:
+=========
+
+=> The Required data annotation specifies that the property with which 
+this annotation is associated is a required property.
+
+
+=> This attribute raises a validation error if the property value is null
+or empty.
+
+
+------------------------------------
+Syntax For Required Data Annotation:
+------------------------------------
+
+[Required]
+public string PropertyName {get; set;}
+
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+* Right click on ModelsFolder => AddClass => Named "Employees.cs"
+
+==================
+On Employee Class:
+==================
+
+    public class Employees
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+    }
+
+
+* Now, go to Index View and make it strongy typed view.
+
+
+================
+On Index.cshtml:
+================
+
+------------------------------------------------
+Syntax For Making View as "Strongly Typed View":
+------------------------------------------------
+@model ApplicationName.FolderName.ModelClassName
+@model WebApplication1.Models.Employees
+
+
+* Now, use Strongly Typed Html Helpers
+
+Note: You can identify Strongly typed Html Helper through "Lambda Sign" and "For".
+
+@using (Html.BeginForm())
+{
+
+----------------------------
+Strongly Typed Html Helpers:
+----------------------------
+
+    <!--For ID-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.ID) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.ID)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model=>model.ID)
+    </p>
+
+
+    <!--For Name-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Name) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Name)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Name)
+    </p>
+
+
+    <!--For Age-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Age) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Age)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Age)
+    </p>
+
+
+    <!--For Gender-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Gender) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Gender)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Gender) 
+    </p>
+
+
+    <!--For Submit Button-->
+    <input type="submit" value="Submit" />
+}
+
+
+===================
+On Home Controller:
+===================
+
+* Create Http Post Version and pass Model class as a parameter in Post version of Index
+
+* Before passing object of model class as a parameter in Post version of Index, make sure
+you import name space "using WebApplication1.Model;" otherwise it will give error on model
+class object.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+ public class HomeController : Controller
+    {     
+        public ActionResult Index()
+        {                
+            return View();
+        }   
+        [HttpPost]
+        public ActionResult Index(Employees e)
+        {
+            return View();
+        }
+    }
+
+* Now go to model class and put annotations. But before putting annotations make sure
+that you imported namespace "using System.ComponentModel.DataAnnotations"
+
+===================
+On Employees Class:
+===================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+    public class Employees
+    {
+        [Required]
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+    }
+
+
+Note: If you run project and click on submit button without filling fields, then you will
+get errors in "ID" Field as well as "Age" field because there is a built-in function in MVC to
+give error on all integer fields if you put Required annotation on any of them. Therefore
+you need to use symbol "?". This "?" sybmol represents nullable type. It means the property
+can also take null values.
+
+-------
+Syntax:
+-------
+
+public int? Age {get; set;}
+
+
+--------
+Example:
+--------
+
+
+    public class Employees
+    {
+        [Required]
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int? Age { get; set; }
+        public string Gender { get; set; }
+    }
+
+* Now, You will get annotation error only on ID Field because Age field can now accept null values.
+
+* If you want to apply annotation on all fields then see this
+
+
+    public class Employees
+    {
+        [Required]
+        public int ID { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public int Age { get; set; }
+        [Required]
+        public string Gender { get; set; }
+    }
+
+* Now you will get errors separately on each field.
+
+Note: But the errors you see is the default errors generated by annotations.
+And if you want to display custom errors then use (ErrorMessage="") in annotation
+after Required.
+
+--------
+Example:
+--------
+
+    public class Employees
+    {
+        //For ID
+        [Required (ErrorMessage ="ID is Mandatory")]
+        public int ID { get; set; }
+
+        //For Name
+        [Required(ErrorMessage = "You cannot leave name field empty")]
+        public string Name { get; set; }
+
+        //For Age
+        [Required(ErrorMessage = "Age is Mandatory")]
+        public int Age { get; set; }
+
+        //For Gender
+        [Required(ErrorMessage = "Gender is Mandatory")]
+        public string Gender { get; set; }
+    }
+
+* Now run application and click on submit without filling fields and then you will
+see your custom message.
+
+
+Note: If you want to change color of error message from "Black" to "Red" then use 
+Anonymous type method on Validation Helper through over-loaded version of Helper.
+
+In Strongly Typed Html Helpers
+1st Argument is model.PropertyName.
+2nd Argument is pre-written value of Helper which should be left empty.
+3rd Argument in 3rd Argument you can use Anonymous type to implement Html Attributes.
+
+================
+On Index.cshtml:
+================
+
+ <!--For ID-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.ID) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.ID)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model=>model.ID,"",new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Name-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Name) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Name)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Name, "", new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Age-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Age) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Age)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Age, "", new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Gender-->
+    <p>
+        <!--Label-->
+        @Html.LabelFor(model => model.Gender) &nbsp;
+
+        <!--TextBox-->
+        @Html.TextBoxFor(model => model.Gender)
+
+        <!--Validation-->
+        @Html.ValidationMessageFor(model => model.Gender, "", new
+   {
+       @class = "text-danger"
+   })
+    </p>
+
+
+    <!--For Submit Button-->
+    <input type="submit" value="Submit" />
+}
+
+* Now go to Home Controller and work in Http Post version Method.
+
+===================
+On Home Controller:
+===================
+
+    public class HomeController : Controller
+    {     
+        public ActionResult Index()
+        {                
+            return View();
+        }   
+        [HttpPost]
+        public ActionResult Index(Employees e)
+        {
+            if (ModelState.IsValid==true)
+            {
+                ViewData["Msg"] = "<script>alert('Data inserted')</script>";
+                ModelState.Clear();
+            }
+            return View();
+        }
+    }
+
+================
+On Index.cshtml:
+================
+
+@Html.Raw(ViewData["Msg"])
+
+
+* Now, run your Application.
+
+
+Note: If you want to make your form more attractive then you can use bootsrtap class
+"form-control" on text boxes through Anonymous method.
+And you can use bootstrap class for Submit button "btn btn-info".
+
+
+-----------
+Conclusion:
+-----------
+For Better understanding, you can see Complete program + coding
+in "Full-Fledged-Program" folder.
+
+
+
+
+
+
+
+

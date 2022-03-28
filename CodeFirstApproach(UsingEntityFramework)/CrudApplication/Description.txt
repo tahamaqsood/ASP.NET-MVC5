@@ -1,0 +1,28 @@
+
+
+
+
+
+
+
+================================= D E S C R I P T I O N =================================
+
+=> Create new project named CodeFirstApproach.
+=> Select Web --> Select MVC --> Click Ok.
+=> Right click on main project --> Click on Manage Nugget Package to Install Entity Framework on your project
+
+
+=> Right Click on Models folder --> Add Class Named DoctorModel --> and start working on it.
+Note: You can see DoctorModel.txt in Classes folder to see coding implementations.
+
+=> Right click on Models folder --> Add DoctorContextClass --> and start working on it.
+Note: You can see DoctorContext.txt in Classes folder to see coding implementations.
+
+
+=> Now Click on WebConfig and Make Connection string after removing default connection string tag.
+Note: You can also see WebConfig.txt to see how Connection Strings were made.
+
+
+=> Now, move on to HomeController and see HomeController.txt to see Coding implementations.
+Note: You can create Strongly typed views by selecting Template and binding it with Model class and Context class.
+for each ActionMethod. There is no need to see View Folder. View Folder is saved just for Backup (In-case).

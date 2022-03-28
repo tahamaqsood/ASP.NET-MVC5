@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication1.Models
+{
+    public class ModelView
+    { 
+        public int Emp_ID { get; set; }
+        [Required(ErrorMessage = "*")]
+        public string Emp_Name { get; set; }
+        [Required(ErrorMessage = "*")]
+        public int Emp_Age { get; set; }
+        [Required(ErrorMessage = "*")]
+        public System.DateTime Emp_DOB { get; set; }
+        [Required(ErrorMessage = "*")]
+        public string Emp_Image { get; set; }
+        [Required(ErrorMessage = "*")]
+        public int Emp_FK_ID { get; set; }
+
+        public virtual DepartmentTable DepartmentTable { get; set; }
+        [Required(ErrorMessage = "*")]
+        public int Dep_ID { get; set; }
+        [Required(ErrorMessage = "*")]
+        public string Dep_Name { get; set; }
+    }
+}

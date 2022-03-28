@@ -1,0 +1,177 @@
+
+
+============
+Annotations:
+============
+
+=>The MVC provides several data annotations that you can apply as an
+attributes to a model class.
+
+
+=> These data annotations implement tasks that are commonly required
+across applications.
+
+
+=> Annotation also known as "Model Based Validation" because it only applies
+on properties which exists in Model class.
+
+
+=> Some of the important annotations that you can use in the models
+of an ASP.NET MVC Application are as follows:
+
+* Required
+* StringLength
+* ReqularExpression
+* Range
+* Compare  
+* DataType
+* DisplayName
+* ReadOnly
+* MaxLength
+* MinLength
+
+Note: Data Annotations can only apply on properties which exists in
+model class and unlike Data Validation.
+
+
+=========================================
+Types of Data Annotations in ASP.NET MVC:
+=========================================
+ 
+=========
+Required:
+=========
+=> This attribute specifies that the value is mandatory and cannot be skipped.
+
+-------
+Syntax:
+-------
+(1) [Required]
+(2) [Required(ErrorMessage="You can't skip Name field")]
+
+
+
+=========
+DataType:
+=========
+=> This attribute is used to specify the datatype of the model.
+
+-------
+Syntax:
+-------
+[DataType(DataType.Text)]
+
+
+
+======
+Range:
+======
+=> Using this attribute we can set a range between two numbers.
+
+-------
+Syntax:
+-------
+(1) [Range(100,500)]
+(2) [Range(100,500,ErrorMessage="Please enter correct value")]
+
+
+
+=============
+StringLength:
+=============
+=> Using this attribute we can specify maximum and minimum length of the property.
+
+-------
+Syntax:
+-------
+(1) [StringLength(30,MinumimLength=5)]
+(2) [StringLength(30,MinumimLength=5,ErrorMessage="Do not enter more than 20 or less than 5 characters")]
+
+
+
+============
+DisplayName:
+============
+=> Using this attribute we can specify property name to be displayed on view.
+
+-------
+Syntax:
+-------
+[Display(Name="Student Name")]
+
+
+
+==========
+MaxLength:
+==========
+=> Using this attribute we can specify maximum length of property.
+
+-------
+Syntax:
+-------
+(1) [MaxLength(10)]
+(2) [MaxLength(10,ErrorMessage="Your user name can't have more than 10 characters")]
+
+
+
+==========
+MinLength:
+==========
+=> Using this attribute we can specify minimum length of property.
+
+-------
+Syntax:
+-------
+(1) [MinLength(5)]
+(2) [MinLength(10,ErrorMessage="Your user name should not be less than 5 characters")]
+
+
+
+=====
+Bind:
+=====
+=> This attribute specifies fields to include or exclude for model binding.
+
+-------
+Syntax:
+-------
+[Bind(Exclude = "StudentID")]
+
+
+
+==============
+DisplayFormat:
+==============
+=> This attribute allows us to set date in the format specified as per the attribute.
+
+-------
+Syntax:
+-------
+[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
+
+
+
+==================
+RegularExpression:
+==================
+=> We can set a regex pattern for the property. For ex: Email ID and Password.
+
+-------
+Syntax:
+-------
+(1) [RegularExpression(<pattern>)]
+(2) [RegularExpression(<pattern>,ErrorMessage="Your custom error message")]
+
+
+
+
+
+
+
+
+
+
+
+
+
+

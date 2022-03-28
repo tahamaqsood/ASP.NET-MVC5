@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication1.Models
+{
+    public class Employees
+    {
+        //For ID
+        [Required (ErrorMessage ="ID is Mandatory")]    
+        public int ID { get; set; }
+
+        //For Name
+        [Required(ErrorMessage = "You cannot leave name field empty")]
+        [StringLength(20, MinimumLength = 5,ErrorMessage ="Name should be in between 50 to 20 characters")]
+        public string Name { get; set; }
+
+        //For Age
+        [Required(ErrorMessage = "Age is Mandatory")]
+        [Range(20,60,ErrorMessage="Employee Age must be in between 20 and 60")]
+        public int Age { get; set; }
+
+        //For Gender
+        [Required(ErrorMessage = "Gender is Mandatory")]
+        public string Gender { get; set; }
+    }
+}

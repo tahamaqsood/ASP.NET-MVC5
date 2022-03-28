@@ -1,0 +1,86 @@
+
+===================
+Regular Expression:
+===================
+
+=> You can use Reqgular Expression annotation to accept user input in a 
+specific format.
+
+
+=> This annotation allows you to match a text string with a search pattern
+that contains one or more character literals, operators or constructs.
+
+Note: This annotation applies on Email and Password fields.
+
+* For Email to check whether the email is valid or not.
+* For password to check if the password is strong or not which includes
+(8 characters, upper and lower case letters, symbols and digits)
+
+
+-------
+Syntax:
+-------
+[RegularExpression(<pattern>)]
+
+
+-------------------------------------------
+Syntax For Displaying Custom Error Message:
+-------------------------------------------
+[RegularExpression(<pattern>,ErrorMessage="Your custom error message")]
+
+
+-------------------------------------
+Regular Expression Pattern For Email:
+-------------------------------------
+=> "^ ([a - zA - Z0 - 9_\-\.] +)@([a - zA - Z0 - 9_\-\.] +)\.([a - zA - Z]{2, 5})$"
+
+
+----------------------------------------
+Regular Expression Pattern For Password:
+----------------------------------------
+=> "(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+
+
+Note: In Practical Implementation, Use @ symbol before pattern of "Regular Expression"
+to avoid escape-sequence conflict.
+
+
+------------------------
+Practical Implementaion:
+------------------------
+
+============================
+On Employee.cs(Model Class):
+============================
+
+public class Employees
+    {
+        
+        //For Email
+        [RegularExpression(@"^ ([a - zA - Z0 - 9_\-\.] +)@([a - zA - Z0 - 9_\-\.] +)\.([a - zA - Z]{2, 5})$")]
+        public string Email { get; set; }
+
+        //For Password
+        [RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$")]
+        public string Password { get; set; }
+    }
+
+
+Note: If you want to display custom error message in your email and password fields then use this.
+
+public class Employees
+    {
+        
+        //For Email
+        [Required (ErrorMessage ="Email is mandatory")]
+        [RegularExpression(@"^ ([a - zA - Z0 - 9_\-\.] +)@([a - zA - Z0 - 9_\-\.] +)\.([a - zA - Z]{2, 5})$",ErrorMessage ="Invalid Email")]
+        public string Email { get; set; }
+
+        //For Password
+        [Required(ErrorMessage = "Employee password is mandatory")]
+        [RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",ErrorMessage ="Your Password must contain upper case,lower case,8 letters,symbols,digits")]
+        public string Password { get; set; }
+    }
+
+
+

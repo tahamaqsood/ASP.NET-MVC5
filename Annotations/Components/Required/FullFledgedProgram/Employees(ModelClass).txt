@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication1.Models
+{
+    public class Employees
+    {
+        //For ID
+        [Required (ErrorMessage ="ID is Mandatory")]
+        public int ID { get; set; }
+
+        //For Name
+        [Required(ErrorMessage = "You cannot leave name field empty")]
+        public string Name { get; set; }
+
+        //For Age
+        [Required(ErrorMessage = "Age is Mandatory")]
+        public int Age { get; set; }
+
+        //For Gender
+        [Required(ErrorMessage = "Gender is Mandatory")]
+        public string Gender { get; set; }
+    }
+}

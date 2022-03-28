@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+
+namespace WebApplication1.Models
+{
+    public class Employees
+    {
+        //ID
+        [Required(ErrorMessage ="Employee id is mandatory")]
+        [DisplayName("Employee ID")]
+        public int ID { get; set; }
+
+        //Name
+        [Required(ErrorMessage = "Employee Name is mandatory")]
+        [StringLength(10, MinimumLength = 3, ErrorMessage = "Your name must be in between 3 to 10 characters")]
+        public string Name { get; set; }
+
+        //Gender
+        [Required(ErrorMessage = "You must have to choose gender")]
+        public string Gender { get; set; }
+
+        //Age
+        [Required(ErrorMessage = "Employee Age is mandatory")]
+        [Range(20,60,ErrorMessage ="Employee Age should be in between 20 to 60")]
+        public int Age { get; set; }
+
+        //Email
+        [Required(ErrorMessage = "Employee email is mandatory")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$",ErrorMessage ="Invalid Email")]
+        public string Email { get; set; }
+
+        //Password
+        [Required(ErrorMessage = "Employee Password is mandatory")]
+        [RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",ErrorMessage ="Your password must be a combination of 8 characters, upper case, lower case, symbols, digits")]
+        public string Password { get; set; }
+
+        //Confirm Password
+        [Required(ErrorMessage = "Employee Confirm Password is mandatory")]
+        [Compare("Password",ErrorMessage ="Password is not matched")]
+        public string ConfirmPassword { get; set; }
+    }
+}

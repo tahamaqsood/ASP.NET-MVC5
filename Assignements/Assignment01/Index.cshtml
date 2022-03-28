@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    @{
+        var a = (WebApplication16.Models.Car)ViewBag.Civic;
+        var b = (WebApplication16.Models.Car)ViewBag.Hyundai;
+    }
+
+    <div style="margin:100px">
+        <big>  <p style="text-align:justify"> The automotive industry in Pakistan is the one of the fastest-growing industries of the country, accounting for 4% of Pakistan's GDP and employing a workforce of over 1.8 million people.[1] Currently,[when?] there are 3,200 automotive manufacturing plants in the country, with an investment of ?92 billion (US$570 million) producing 1.8 million motorcycles and 200,000 vehicles annually. Its contribution to the national exchequer is nearly ?50 billion (US$310 million). The sector, as a whole, provides employment to 3.5 million people and plays a pivotal role in promoting the growth of the vendor industry. Pakistan's auto market is considered[by whom?] among the smallest, but fastest-growing in Asia. Over 180,000 cars were sold in the fiscal year 2014–15, rising to 206,777 units fiscal year 2015–16.[2][3][4] </p></big>
+
+        <big><p style="text-align:justify">At present, the auto market is dominated by Honda, Toyota and Suzuki. However, on 19 March 2016, Pakistan passed the "Auto Policy 2016-21", which offers tax incentives to new automakers to establish manufacturing plants in the country.[5][6] In response, Renault, Nissan, Proton Holdings, Kia, SsangYong, Volkswagen,[7] FAW[8] and Hyundai[9] have expressed interest in entering the Pakistani market.[2][10] MG JW Automobile Pakistan has signed Memorandum of Understanding (MoU) with Morris Garages (MG) Motor UK Limited, owned by SAIC Motor to bring electric vehicles in Pakistan.[11][12][13][14][15] NLC signed an agreement with Mercedes Benz for the manufacturing of Mercedes Actros trucks in Pakistan. Pakistan has not enforced any automotive safety standards or model upgrade policies. A few old models of vehicles including the Bolan and Ravi continue to be sold by Suzuki.[16] </p></big>
+
+
+    </div>
+    <div class="mydiv"></div>
+
+    <div class="jumbotron">
+        <table style="width:100%">
+
+            <!-- 1st Row -->
+            <tr>
+                <th>Name</th>  <!-- 1st Column -->
+                <th>Price</th> <!-- 2nd Column -->
+                <th>Model</th> <!-- 3rd Column -->
+            </tr>
+            <!--/ 1st Row -->
+            <!-- 2nd Row-->
+            <tr>
+                <td> @a.Name</td>  <!-- 1st Column -->
+                <td> @a.Price</td> <!-- 2nd Column -->
+                <td> @Html.ActionLink(@a.Model, "Toyota")</td> <!-- 3rd Column -->
+            </tr>
+            <!--/ 2nd Row-->
+            <!-- 3rd Row -->
+            <tr>
+                <td> @b.Name</td>  <!-- 1st Column -->
+                <td> @b.Price</td> <!-- 2nd Column -->
+                <td> @Html.ActionLink(@b.Model, "GrandStarex") </td>  <!-- 3rd Column -->
+            </tr>
+            <!--/ 3rd Row -->
+        </table>
+
+    </div>
+</body>
+</html>

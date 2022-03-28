@@ -1,0 +1,40 @@
+<!--For Heading-->
+<div class="jumbotron" style="background:Black;">
+    <h2 class="text" style="text-align:center;">CRUD APPLICATION FOR HOSPITAL MANAGEMENT</h2>
+
+</div>
+
+
+
+<!--For Animation on Text-->
+<style>
+    .text
+    {
+        color:royalblue;
+        font-size:40px;
+        font-weight:500;
+        letter-spacing:5px;
+        margin-bottom:20PX;
+        position:relative;
+        animation: text 15s 1 ease-in-out;
+    }
+
+    @@keyframes text
+    {
+        0%
+        { 
+            color:gray;
+            margin-bottom: -40px;
+        }
+        30%
+        {
+            letter-spacing:25px;
+            margin-bottom:-40px;
+        }
+        85%
+        {
+            letter-spacing:25px;
+            margin-bottom:-40px;
+        }
+    }
+</style>

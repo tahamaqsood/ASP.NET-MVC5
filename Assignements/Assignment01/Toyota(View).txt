@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+
+
+    <style>
+        body {
+            background-color: rgba(27,31,34);
+        }
+
+        h1 {
+            font-size: 4.1rem;
+            line-height: 1.4;
+            letter-spacing: 0.5rem;
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .mydiv {
+            width: 70%;
+            height: 400px;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%,-50%);
+            background-image: url(../../Models/img4.jpg);
+            background-size: 100% 100%;
+            animation: slider 9s infinite linear;
+        }
+       
+
+        #para {
+            color: white;
+            text-align: center;
+        }
+
+        #para2 {
+            color: white;
+            text-align: center;
+        }
+
+        #para3 {
+            color: white;
+            text-align: justify;
+        }
+
+        @@keyframes slider
+        {
+            0%{background-image:url(../../Models/ToyotaImage1.jpg);}
+
+            35%{background-image:url(../../Models/ToyotaImage2.jpg);}
+
+            75%{background-image:url(../../Models/ToyotaImage3.jpg);}
+        }
+    </style>
+
+</head>
+<body>
+    <h1> Toyota Corolla</h1>
+    <div class="mydiv"></div>
+
+    <div style="margin-top:443px;">
+        <p id="para">
+            The 2020 redesign puts the Corolla on a new platform shared with the compact sedan’s hatchback sibling.
+            Power comes from a standard 139-horsepower, 1.8-liter four-cylinder engine that works with a continuously variable automatic transmission.
+            A more-powerful 2.0-liter four-cylinder is also available.
+            All Corolla trim levels have an independent rear suspension for better handling,
+            and Toyota’s Safety Sense 2.0 suite of safety and driver-assistance features is standard.
+
+        </p>
+        <p id="para2">
+            The 2014 redesign improved aerodynamics, with a stiffened body that used more high-strength steel.
+            A continuously variable automatic transmission was introduced.
+            A new LE Eco version with a more elaborate variable valve timing system offered more power and better fuel economy.
+            More rigid suspension pieces improved handling. Other than special editions, not much changed until 2017’s sportier grille and LED headlights,
+            along with a standard backup camera and upgraded fabrics.
+        </p>
+    </div>
+
+
+    <!--Column 1-->
+    <div style="margin-top:70px; color:white" class="col-md-4">
+        <p>
+            <b>
+                The Toyota Corolla has 1 Petrol Engine on offer. The Petrol engine is 1794 cc . It is available with the Manual & Automatic transmission.
+            </b>
+        </p>
+        <img src="~/Models/ToyotaImage1.jpg" style="width:290px; height:155px;" />
+
+    </div>
+
+
+
+    <!--Column 2-->
+    <div style="margin-top:70px; color:white" class="col-md-4">
+        <p>
+            <b>
+                The 2021 Toyota Corolla has straightforward infotainment controls and a well-mannered ride, but it struggles to match the power, agility, and practicality.
+            </b>
+        </p>
+        <img src="~/Models/ToyotaImage2.jpg" style="width:290px; height:155px;" />
+
+    </div>
+
+
+    <!--Column 3-->
+    <div style="margin-top:70px; color:white" class="col-md-4">
+        <p>
+            <b>
+                The 2021 Toyota Corolla's #6 ranking is based on its score within the Compact Cars category. It is a finalist for our 2021 Best Compact Car.
+            </b>
+        </p>
+        <img src="~/Models/ToyotaImage3.jpg" style="width:290px; height:155px;" />
+
+    </div>
+
+
+    <div style="margin-top:220px;">
+
+        <p id="para3">
+            Our goal is to make shopping for your next car as easy as possible.
+            You'll find everything you need to know about this vehicle in our comprehensive review.
+            It combines concrete data like horsepower ratings, gas mileage, and cargo space dimensions with 23 professional Toyota Corolla reviews.
+            This review incorporates applicable research for all models in this generation, which launched for 2020.
+            At U.S. News & World Report, we rank the Best Jobs, Best Hospitals, and Best Colleges to guide readers through some of life’s most complicated decisions. We've been ranking and reviewing vehicles since 2007, and our staff has more than 75 years of combined experience in the auto industry. To ensure our objectivity, we never accept expensive gifts from carmakers,
+            and an outside firm manages the ads on our site.
+        </p>
+
+
+    </div>
+
+
+</body>
+</html>

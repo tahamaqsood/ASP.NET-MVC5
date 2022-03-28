@@ -1,0 +1,140 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using CodeFirstApproach.Models;
+using System.Data.Entity;
+
+namespace CodeFirstApproach.Controllers
+{
+    public class HomeController : Controller
+    {
+        DoctorContext obj = new DoctorContext();
+
+
+        //Right click on Index-Add View-Select Template = List-Select Model Class-Select Context Class-Add 
+        public ActionResult Index()
+        {
+            var data = obj.DoctorDetails.ToList();
+            return View(data);
+        }
+
+
+        //Right click on Create-Add View-Select Template = Create-Select Model Class-Select Context Class-Add
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Create(DoctorModel d)
+        {
+            if (ModelState.IsValid==true)
+            {
+                obj.DoctorDetails.Add(d);
+                int value = obj.SaveChanges();
+                if (value>0)
+                {
+                    TempData["Message1"] = "<script>alert('Data inserted..!')</script>";
+                    ModelState.Clear();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Message1 = "Data not inserted..!";
+                }
+            }          
+            return View();
+        }
+
+
+
+        //Right click on Edit-Add View-Select Template = Edit-Select Model Class-Select Context Class-Add
+        public ActionResult Edit(int id)
+        {
+            var row = obj.DoctorDetails.Where(model => model.ID == id).FirstOrDefault();
+            return View(row);
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(DoctorModel d)
+        {
+            if (ModelState.IsValid==true)
+            {
+                obj.Entry(d).State = EntityState.Modified;
+                int value = obj.SaveChanges();
+                if (value>0)
+                {
+                    TempData["Message2"] = "<script>alert('Data Updated Successfully..!')</script>";
+                    ModelState.Clear();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Message2 = "Data not Updated..!";
+                }
+            }      
+            return View();
+        }
+
+
+
+        //Right click on Delete-Add View-Select Template = Delete-Select Model Class-Select Context Class-Add
+        public ActionResult Delete(int id)
+        {
+            var row = obj.DoctorDetails.Where(model => model.ID == id).FirstOrDefault();
+            return View(row);
+        }
+
+
+        [HttpPost]
+        public ActionResult Delete(DoctorModel d)
+        {
+            if (ModelState.IsValid==true)
+            {
+                obj.Entry(d).State = EntityState.Deleted;
+                int value = obj.SaveChanges();
+                if (value>0)
+                {
+                    TempData["Message3"] = "<script>alert('Data deleted successfully..!')</script>";
+                    ModelState.Clear();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Message3 = "Data not deleted";
+                }
+            }     
+            return View();
+        }
+
+
+
+       //Right click on Details-Add View-Select Template = Details-Select Model Class-Select Context Class-Add
+        public ActionResult Details(int id)
+        {
+            var row = obj.DoctorDetails.Where(model => model.ID == id).FirstOrDefault();
+            return View(row);
+        }
+
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}

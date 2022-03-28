@@ -1,0 +1,21 @@
+--For Database--
+create database MyLogin
+use MyLogin
+
+
+--Creating Table--
+create table User_Table
+(
+ID int primary key identity not null,
+FirstName varchar(30) not null,
+LastName varchar(30) not null,
+Age int not null,
+Gender varchar(30) not null,
+City varchar(50) not null,
+Email varchar(40) not null,
+Password varchar(30) not null,
+ConfirmPassword varchar(30) not null,
+status int default 0 not null
+)
+
+select * from User_Table

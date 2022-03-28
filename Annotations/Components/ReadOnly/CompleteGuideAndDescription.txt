@@ -1,0 +1,68 @@
+
+
+=========
+ReadOnly:
+=========
+
+=> You can use the ReadOnly Annotation to display read-only fields on a form.
+
+
+=> You can use this annotation to instruct the default model binder not to
+set the specific property with a new value from the request.
+
+
+-------
+Syntax:
+-------
+[ReadOnly(<boolean_value>)]
+
+where,
+<boolean_value> is value which can be true or false. A true value indicates that
+the default model binder should not set a new value for the property. Whereas
+false value indicates that the default model binder should set a new value for
+the property based on the request.
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+==========================
+On Employees(Model Class):
+==========================
+
+    public class Employees
+    {
+        //For ReadOnly Label
+        [DisplayName("Organization Name")]
+        [ReadOnly(true)]
+        public string OrganizationName { get; set; }
+    }
+
+================
+On Index.cshtml:
+================
+
+@using(Html.BeginForm())
+{
+
+    <p>
+        @Html.LabelFor(model=>model.OrganizationName) &nbsp;
+        @Html.TextBoxFor(model=>model.OrganizationName,new
+   {
+       @class = "form-control",
+       @Value = "ABC Organization",
+       @readonly = true
+   })
+    </p>
+
+}
+
+Note: readonly is reserved keyword in C#, therefore we need to use @ symbol 
+before readonly keyword to use it as an Html Attribute.
+
+Note: In View, There is no need of @Html.ValidationMessageFor() for "ReadOnly" Annotation.
+
+
+
+

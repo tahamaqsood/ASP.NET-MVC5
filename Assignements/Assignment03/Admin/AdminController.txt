@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using AdminApproval.Models;
+using System.Data.Entity;
+
+namespace AdminApproval.Controllers
+{
+    public class AdminController : Controller
+    {
+        MyLoginEntities obj = new MyLoginEntities();
+        // GET: Admin
+        public ActionResult Index()
+        {
+            var data = obj.User_Table.ToList();
+            return View(data);
+        }
+        public ActionResult Edit(int id)
+        {
+            var data = obj.User_Table.Where(x => x.ID == id).FirstOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(User_Table t)
+        {
+            if (ModelState.IsValid==true)
+            {
+                obj.Entry(t).State = EntityState.Modified;
+                int value = obj.SaveChanges();
+                if (value > 0)
+                {
+                    TempData["AccReg"] = "<script>alert('Account has been registered')</script>";
+                    return RedirectToAction("Index", "Admin");
+                }            }
+           
+            return View();
+        }
+
+
+    }
+}

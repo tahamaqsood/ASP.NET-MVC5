@@ -1,0 +1,55 @@
+
+======
+Range:
+======
+
+=> You can use the Range Annotation to specify the minimum and maximum
+contraints for a numeric value.
+
+=> This Annotation basically checks the range for a numeric/integer values.
+
+
+-------
+Syntax:
+-------
+[Range(<minimum_range> , <maximum_range>)]
+
+* Where,
+
+=> <minimum_range> is an integer value that specifies the minimum value for the range.
+
+=> <maximum_range> is an integer value that specifies the maximum value for the range.
+
+
+-------------------------------------------
+Syntax For Displaying Custom Error Message:
+-------------------------------------------
+=> [Range(<minimum_range> , <maximum_range> , ErrorMessage="Your Message")]
+
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+     [Range(20,60)]
+     public int Age {get; set;}
+
+
+* Now, if you run your project and enter 19 or 61 in your Age field, then you will 
+see Default error message. But if you want to display your own custom error Message,
+then:
+
+-----------------------------------------
+For Displaying Your Custom Error Message:
+-----------------------------------------
+
+     [Range(20,60,ErrorMessage="Age should be in between 20 and 60")]
+     public int Age {get; set;}
+
+
+
+
+
+
+ 

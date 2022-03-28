@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+
+
+    <style>
+        body {
+            background-color: rgba(27,31,34);
+        }
+
+        h1 {
+            font-size: 4.1rem;
+            line-height: 1.4;
+            letter-spacing: 0.5rem;
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .mydiv {
+            width: 70%;
+            height: 400px;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%,-50%);
+            background-image: url(../../Models/img5.jpg);
+            background-size: 100% 100%;
+            animation: slider 9s infinite linear;
+        }
+
+        #para {
+            color: white;
+            text-align: center;
+        }
+
+        #para2 {
+            color: white;
+            text-align: justify;
+        }
+
+        #para3 {
+            color: white;
+            text-align: justify;
+        }
+        @@keyframes slider
+        {
+            0%{background-image:url(../../Models/img1.jpg);}
+
+            35%{background-image:url(../../Models/img2.jpg);}
+
+            75%{background-image:url(../../Models/img3.jpg);}
+
+        }
+    </style>
+
+</head>
+<body>
+    <h1> Grand Starex</h1>
+    <div>
+        <div class="mydiv"></div>
+    </div>
+
+    <div style="margin-top:48%">
+
+
+        <p id="para">
+
+            Hyundai Grand Starex GLS has engine power of 175 hp  6000 RPM with 4 Cylinders and top speed is 182 KM/H,
+            each Cylinders of this model has 5 speed Automatic transmission.
+            This vehicle has Petrol suspension and has Rack & Pinion with Electronic Motor Steering Type.
+            Hyundai Grand Starex GLS uses EFI with i-VTEC Petrol fuel system.
+            The break system is Front:
+            Ventilated Disc Rear: Ventilated Disc and it is a 4 door vehicle.
+            The current price of Hyundai Grand Starex GLS in Pakistan is Rs: 5,099,000 Rupees.
+            The road price of the vehicle might be different as registration etc is additional.
+
+        </p>
+    </div>
+
+
+    <!--Column 1-->
+    <div style="margin-top:70px; color:white" class="col-md-4">
+        <p>
+            <b>
+                Moreover, the dimensions of the vehicles are:
+                Length: 5,125 mm and
+                Width: 1,920 mm
+                Height: 6.4
+            </b>
+        </p>
+        <img src="~/Models/img2.jpg" style="width:290px; height:155px;" />
+
+    </div>
+
+
+    <!--Column 2-->
+    <div style="margin-top:70px; color:white" class="col-md-4">
+
+        <p><b>The vehicle comes equipped with different engine options such as 2.4 L petrol engine, 2.5</b></p>
+        <img src="~/Models/img3.jpg" style="width:290px" />
+    </div>
+
+
+    <!--Column 3-->
+    <div style="margin-top:70px; color:white" class="col-md-4">
+        <p> <b>   Hyundai has launched three variants of Grand Starex in Pakistan. The price ranges from Rs. 4,549,000 To 5,899,000. </b></p>
+        <img src="~/Models/img5.jpg" style="width:290px; height:155px;" />
+
+    </div>
+
+    <div style="margin-top:320px;">
+        <p id="para2">
+
+            Hyundai Grand Starex is among the popular Hyundai cars.
+            It is a reason that people want to remain updated with the Hyundai Grand Starex 2020 price in Pakistan.
+            Here, you can analyze the full information about the 2020 model of Hyundai Grand Starex.
+            Besides Hyundai Grand Starex 2020 features and specifications, you can also view photos, reviews,
+            and price details. Get information about the seating capacity, horsepower, engine rating, and fuel mileage.
+
+            Hyundai Grand Starex 2020 price in Pakistan is in high range.
+            It is recommended that you should get all the relevant information about a car before making a sale or purchase.
+            However, knowledge about the features and specifications of Hyundai Grand Starex 2020 is important for both buyer and seller.
+            The Hyundai Grand Starex 2020 price in Pakistan is higher than the previous models.
+
+        <p id="para3">
+            A lot of people prefer to buy a new car from the showroom.
+            Hyundai Grand Starex 2020 showrooms are present in different cities of Pakistan.
+            They offer both sales and support services to their customers. If you are low on budget,
+            you can buy a used Hyundai Grand Starex as it will allow you to save a handsome amount.
+
+            <b> Hyundai Grand Starex 2020 Interior</b>
+            The Hyundai Grand Starex 2020 interior is comfortable for both driver and passengers. The car possesses several advanced features.
+
+            <b> Hyundai Grand Starex 2020 Exterior</b>
+            The Hyundai Grand Starex 2020 exterior is durable due to the enhanced build quality. Overall, the car has an appealing outlook.
+
+            <b>   Hyundai Grand Starex 2020 Colors </b>
+            Hyundai Grand Starex 2020 is available in different appealing colors.
+
+            Availability Of Hyundai Grand Starex 2020 Car Parts In Pakistan
+            Hyundai Grand Starex 2020 spare parts can be easily purchased from different automobile markets in Pakistan. The information can be also collected from the Hyundai Grand Starex showroom in Pakistan for further information.
+
+            Hyundai Grand Starex 2020 Price in Pakistan
+            Latest Hyundai Grand Starex 2020 price in Pakistan are range between PKR 4,549,000 to PKR 5,899,000.
+
+            Search Grand Starex cars including from several years including SONATA, ACCENT, ELANTRA, TUCSON, SANTA FE, Santro, Shehzore, Grand Starex, Ioniq, H-100, H1-., and others. You can also view cars from different manufacturers such as Honda, Suzuki, Toyota, FAW, Audi, Hyundai, Porsche, United Autos, and more.
+        </p>
+    </div>
+
+
+
+
+
+
+</body>
+</html>

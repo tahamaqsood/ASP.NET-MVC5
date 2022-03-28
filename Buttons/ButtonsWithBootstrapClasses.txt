@@ -1,0 +1,34 @@
+                 
+
+=============================
+Buttons With Bootstrap Class:
+=============================
+
+
+
+
+                        <!--btn-->
+    <input type="submit" value="Submit" class="btn btn-info" />    <!--btn-Info-->     <p>Btn-Info</p>
+    <br />
+    <br />                      
+    <input type="submit" value="Submit" class="btn btn-primary" /> <!--btn-Primary-->  <p>Btn-Primary</p>
+    <br />
+    <br />
+    <input type="submit" value="Submit" class="btn btn-success" /> <!--btn-Success-->  <p>Btn-Success</p>
+    <br />
+    <br />
+    <input type="submit" value="Submit" class="btn btn-danger" />  <!--btn-Danger-->   <p>Btn-Danger</p>
+    <br />
+    <br />
+
+                       <!--Alert-->
+    <input type="submit" value="Submit" class="btn alert-danger" />  <!--alert-danger --> <p>Alert-Danger</p>
+    <br />
+    <br />
+    <input type="submit" value="Submit" class="btn alert-success" /> <!--alert-success --><p>Alert-Success</p>
+    <br />
+    <br />
+    <input type="submit" value="Submit" class="btn alert-warning" /> <!--alert-warning --><p>Alert-Warning</p>
+    <br />
+    <br />
+    <input type="submit" value="Submit" class="btn alert-info" />    <!--alert-info -->   <p>Alert-Info</p>

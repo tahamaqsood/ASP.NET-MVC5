@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using AdminApproval.Models;
+namespace AdminApproval.Controllers
+{
+    public class HomeController : Controller
+    {
+        MyLoginEntities obj = new MyLoginEntities();
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult LOGIN()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LOGIN(User_Table t)
+        {
+            User_Table db = new User_Table();
+            
+            var data = obj.User_Table.Where(x => x.Email == t.Email && x.Password == t.Password&&x.status==1).FirstOrDefault();
+            var data1 = obj.User_Table.Where(x => x.Email == t.Email && x.Password == t.Password).FirstOrDefault();
+            var data3 = obj.User_Table.Where(x => x.Email != t.Email && x.Password != t.Password).FirstOrDefault();
+
+
+            if (data!=null)
+            {
+              return RedirectToAction("Index", "Home");
+            }
+            else if(data1!=null)
+            {
+                TempData["AdminApproval"] = "<script>alert('Your Account will be verified within few minutes')</script>";
+            }
+            if (data3 !=null)
+            {
+                TempData["NoAccount"] = "<script>alert('Account does not exist')</script>";
+            }
+            return View();
+        }
+
+        public ActionResult SIGNUP()
+        {
+            var cities = new List<string>()
+            {
+                "Karachi","Lahore","Islamabad","Quetta","Peshawar"
+            };
+            ViewBag.list = cities;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SIGNUP(User_Table t)
+        {
+            if (ModelState.IsValid==true)
+            {
+                obj.User_Table.Add(t);
+                int value = obj.SaveChanges();
+                if (value>0)
+                {
+                    TempData["Registration"] = "<script>alert('Thank you for registration')</script>";
+                }
+                return RedirectToAction("LOGIN", "Home");
+            }
+            return View();
+        }
+
+       
+    }
+}

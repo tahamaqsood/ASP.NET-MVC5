@@ -1,0 +1,19 @@
+create database Company
+use Company
+
+create table DepartmentTable
+(
+Dep_ID int primary key identity not null,
+Dep_Name varchar(50) not null
+)
+
+
+create table EmployeeTable
+(
+Emp_ID int primary key identity not null,
+Emp_Name varchar(50) not null,
+Emp_Age int not null,
+Emp_DOB date not null,
+Emp_Image varchar(max) not null,
+Emp_FK_ID int foreign key references DepartmentTable(Dep_ID) not null
+)

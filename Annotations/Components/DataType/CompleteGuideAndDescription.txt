@@ -1,0 +1,186 @@
+
+
+=========
+DataType:
+=========
+
+=> You can use the DataType data Annotation to provide information about the
+specific purpose of a property at run time.
+
+
+Note: This Annotation will not work with @Html.TextBoxFor(), You will need to
+use @Html.EditorFor() instead. 
+
+
+-------
+Syntax:
+-------
+[DataType(DataType.<value>)]
+
+=> Most Common Values which used in Web Forms
+
+* Password
+* MultiLineText
+* Date
+* Time
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+===========================
+On Employees.(Model Class):
+===========================
+
+    public class Employees
+    {
+        //Password
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+
+======================
+On Index.cshtml(View):
+======================
+
+<P>
+@Html.LabelFor(model=>model.Password) &nbsp;
+@Html.EditorFor(model=>model.Password , new
+{
+  @class = "form-control",
+  placeholder = "Enter Password"
+
+})
+@Html.ValidationMessageFor(model=>model.Password)
+</p>
+
+Now, If you run your project, you will see your password in a bullet form but,
+Bootstrap class "form-control" won't apply on EditorFor helper. If you want to apply
+Bootstrap class on @Html.EditorFor() helper through Anonymous type, then you need to
+pass object of htmlAttributes after "new" keyword of Anonymous Type. 
+
+------------
+For Example:
+------------
+
+<P>
+@Html.LabelFor(model=>model.Password) &nbsp;
+@Html.EditorFor(model=>model.Password , new
+{
+
+  htmlAttributes = new {@class = "form-control", placeholder = "Enter Password"}
+
+})
+@Html.ValidationMessageFor(model=>model.Password)
+</p>
+
+Now, if you run your project you will see your password in bullets form and your TextBox
+with Bootstrap class.
+
+Note: You can repeat this process for Confirm Password field. And don't forget to apply 
+Regular Expression Data Annotation on Password field and Compare Data Annotation on
+Confirm Password field.
+
+
+
+------------------
+For MultilineText:
+------------------
+
+==========================
+On Employess(Model Class):
+==========================
+
+     public class Employees
+     {    
+      [DataType(DataType.MultilineText)]
+       public string Address { get; set; }
+     }
+
+======================
+On Index.cshtml(View):
+======================
+
+    <p>
+
+        @Html.LabelFor(model => model.Address) &nbsp;
+        @Html.EditorFor(model => model.Address, new
+   {
+       htmlAttributes = new { @class = "form-control" }
+   })
+        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new
+   {
+        @class = "text-danger"
+   })
+
+   </p>
+
+
+
+---------
+For Date:
+---------
+
+    public class Employees
+    {
+    [DataType(DataType.Date)]
+    public string DateOfBirth { get; set; }
+    }
+
+
+======================
+On Index.cshtml(View):
+======================
+
+    <p>
+
+        @Html.LabelFor(model => model.DateOfBirth) &nbsp;
+        @Html.EditorFor(model => model.DateOfBirth, new
+   {
+       htmlAttributes = new { @class = "form-control" }
+   })
+        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new
+   {
+        @class = "text-danger"
+   })
+
+   </p>
+
+
+
+---------
+For Time:
+---------
+
+==========================
+On Employess(Model Class):
+==========================
+
+     public class Employees
+     {    
+      [DataType(DataType.Time)]
+       public int Time { get; set; }
+     }
+
+
+======================
+On Index.cshtml(View):
+======================
+
+    <p>
+
+        @Html.LabelFor(model => model.Time) &nbsp;
+        @Html.EditorFor(model => model.Time, new
+   {
+       htmlAttributes = new { @class = "form-control" }
+   })
+        @Html.ValidationMessageFor(model => model.Time, "", new
+   {
+        @class = "text-danger"
+   })
+
+   </p>
+
+
+Now, run your project. And see Full-Fledged-Program for better understanding.

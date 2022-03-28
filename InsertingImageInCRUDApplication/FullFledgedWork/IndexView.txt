@@ -1,0 +1,48 @@
+@model IEnumerable<WebApplication1.Models.ModelView>
+
+
+<div>
+<table class="table table-responsive">
+
+
+        <tr>
+            <th>Employee Name</th>
+            <th>Employee Age</th>
+            <th>Employee DOB</th>
+            <th>Employee Department</th>
+            <th>Employee Image</th>
+            <th>Actions</th>
+        </tr>
+
+    
+        @if (Model!=null)
+        {
+            foreach (var i in Model)
+            {
+                <tr>
+                  <td>@i.Emp_Name</td>
+                  <td>@i.Emp_Age</td>
+                  <td>@i.Emp_DOB</td>
+                  <td>@i.Dep_Name</td>
+                  <td><img src="@Url.Content(@i.Emp_Image)" width="50" height="50" /> </td>
+
+                    <td>
+            <a class="btn btn-primary btn-sm"   href="@Url.Action("Index", new { id = i.Emp_ID})">Edit</a>
+
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Index", new { id = i.Emp_ID})">Delete</a>
+
+            <a class="btn btn-success btn-sm" href="@Url.Action("Index", new { id = i.Emp_ID})">Detail</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center"> No records found!!  </td>
+            </tr>
+        }
+    
+</table>
+    </div>
+

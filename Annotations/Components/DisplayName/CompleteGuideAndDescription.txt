@@ -1,0 +1,71 @@
+
+
+============
+DisplayName:
+============
+
+=> When you use the @Html.LabelFor() helper method in a strongly typed view,
+the method displays a label with a text whose value is corresponding to the
+property name.
+
+
+=> By using "DisplayName" Data Annotation you can explicitly state the text
+which will display on your web browser.
+
+
+=> Before using this [DisplayName] annotation, you need to add namespace
+which is  " using System.ComponentModel; "
+
+
+Note: 
+=> using System.ComponentModel;
+
+=> using System.ComponentModel.DataAnnotations;
+
+Are two different namespaces, supports different functionalities.
+
+
+-------
+Syntax:
+-------
+
+[DisplayName("Label Name Which you want to display on your Web browser")]
+
+Note: If you use this Annotation then your Strongly Typed Helper Method
+@Html.LabelFor() will not work.
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+    public class Employees
+    {
+        //ID
+        [DisplayName("ID")]
+        public int EmployeeId { get; set; }
+
+        //Name
+        [DisplayName("Name")]
+        public string EmployeeName { get; set; }   
+    }
+
+* Now, if you run your project, you will see ID and Name as a label on your TextBoxes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
