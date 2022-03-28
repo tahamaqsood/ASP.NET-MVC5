@@ -1,0 +1,41 @@
+
+
+--------
+Session:
+--------
+
+=> Session is a property of Controller class whose type is HttpSessionStateBase.
+
+
+
+=> Session is basically derived from HttpSessionStateBase.
+
+
+
+=> Session is also used to pass data within ASP.NET MVC Application and unlike TempData.
+
+
+
+=> TempData maintain your data in 1st request but if you move further then your data will be expired.
+
+
+
+=> Session always maintain your data but if you don't click or don't engage in any activity related to
+data of Session within 20 minutes, then your data will be expired..!
+
+
+
+=> It presist for expiration time (Default time duration is 20 minutes but it can be increased or decreased).
+
+
+
+=> Session is valid for all request not for a single redirect.
+
+
+
+=> It also requires type casting for getting data and check for null values to avoid error. 
+
+
+
+=> Session has a performance drawback that's why it is not recommended to always use Session,
+Session can be used according to the situation.  

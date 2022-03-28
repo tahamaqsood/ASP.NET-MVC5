@@ -1,0 +1,101 @@
+@model LoginForm.Models.UserTable
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+   
+    <div class="col-md-2 col-md-offset-3" style="margin-top:100px; width:500px; background-image:url(../../MyImage/pexels-photo-531880.jpeg)">
+
+                                                                                                                 <!--(../../MyImage/pexels-photo-531880.jpeg)">-->
+        <div style="border:none groove gray; padding:10px;">
+            <table height="200" width="500">
+
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                {
+                    <tr>
+                        <th colspan="4" class="text-center" id="demo" style="font-weight:900; font-size:20px; letter-spacing:9px; color:black;">LOGIN FORM</th>
+                    </tr>
+
+
+                    <!--For Username-->
+                    <tr>
+                        <td style="color:white">
+                            @Html.LabelFor(x => x.UserName)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", placeholder = "Enter Username" })
+                            @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+
+                    <!--For Email-->
+                    <tr>
+                        <td style="color:white">
+                            @Html.LabelFor(x => x.Email)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Enter Email" })
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+
+                    <!--For Password-->
+                    <tr>
+                        <td style="color:white">
+                            @Html.LabelFor(x => x.Password)
+                        </td>
+                        <td>
+                            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password" } })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                           
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <!--For Button-->
+                        <td><!--Leave first column empty to put Login button in center position--></td>
+                        <td>
+                            <input type="submit" value="Login" class="btn btn-primary" style="width:400px;" />
+                        </td>
+                    </tr>
+                }
+            </table>
+            
+        </div>
+    </div>
+</div>
+<b class="text-danger text-center col-md-offset-5" id="danger" style="font-weight:900; font-size:25px; margin-top:120px;"> @ViewBag.ErrorMessage</b>
+<style>
+    #demo {
+        animation: myAnimation 3s 1 ease-in-out;
+    }
+
+    @@keyframes myAnimation {
+        0% {
+            color: black;
+            filter: blur(10px);
+        }
+    }
+
+
+    #danger
+    {
+        animation: danger 1s 1 ease-in-out
+    }
+    @@keyframes danger
+    {
+        0%
+        {
+            color:gray;
+            filter:blur(10px);
+        }
+
+    }
+
+
+
+</style>

@@ -1,0 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication13.Models; //using ApplicationName.FolderName; //(Must Add)
+
+namespace WebApplication13.Models
+{
+    public class HospitalsController : Controller
+    {
+        //For list....
+        List<Doctors> obj = new List<Doctors>();
+
+        // GET: Hospitals
+        public ActionResult Index()
+        {
+            //For Dr Usman
+            Doctors Usman = new Doctors();
+            Usman.Id = 91;
+            Usman.Name = "Usman Hameed";
+            Usman.Salary = 70000;
+            Usman.Shift = "Evening";
+            obj.Add(Usman); //Adding all Attributes through Add method...
+
+            //For Bilal
+            Doctors Bilal = new Doctors();
+            Bilal.Id = 92;
+            Bilal.Name = "Bilal Amir";
+            Bilal.Salary = 75000;
+            Bilal.Shift = "Morning";
+            obj.Add(Bilal); //Adding all Attributes through Add method...
+
+            return View(obj);
+        }//Now Press Ctrl+Shift+B to Build Your Application...
+        //Now Right Click on Index , Add view , Choose List in Template option and then select
+        // Model ClassName (ApplicationName) in Model Class option. 
+        // Doctors.cs(WebApplication13)
+
+        // GET: Hospitals/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Hospitals/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Hospitals/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Hospitals/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Hospitals/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Hospitals/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Hospitals/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}

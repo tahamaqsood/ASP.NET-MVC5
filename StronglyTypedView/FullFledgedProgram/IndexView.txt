@@ -1,0 +1,14 @@
+@model List<WebApplication2.Models.Employees>
+
+
+<ul>
+    @{ 
+        foreach (var item in Model)
+        {
+            <li> @item.ID </li>
+            <li> @item.Name </li>
+            <li> @item.Gender </li>
+            <li> @item.Age </li>
+        }
+    }
+</ul>

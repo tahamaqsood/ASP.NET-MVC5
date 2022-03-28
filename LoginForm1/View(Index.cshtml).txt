@@ -1,0 +1,35 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="margin:100px;">
+    <form method="post">
+
+        <!--Label 1-->
+        <input type="text" name="UserName" placeholder="Enter User Name" /><br />
+        <!--Label 2-->
+        <input type="password" name="UserPassword" placeholder="Enter Password" /><br />
+        <!--Login Button-->
+        <input type="submit" name="Login-Button" class="alert-success" value="Login" />
+    </form>  
+</div>
+
+<div class="col-lg-offset-11">
+    <!--Programming Logic (If Condition)-->
+@{
+    if (ViewBag.UserName == ViewBag.uname && ViewBag.UserPassword == ViewBag.upassword)
+    {
+        <h2>@ViewBag.success</h2>
+    }
+    else
+    {
+        <h2>@ViewBag.fail</h2>
+    }
+}
+    </div>
+
+
+
+    
+   
+

@@ -1,0 +1,15 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="margin-top:auto">
+    <form action="/" method="post">
+        <input type="text" name="MyTxt" value="" />
+        <input type="submit" name="btn_sub" value="submit" />
+
+
+
+    </form>
+
+    <h3>Result: @TempData["MyName"]</h3>
+</div>

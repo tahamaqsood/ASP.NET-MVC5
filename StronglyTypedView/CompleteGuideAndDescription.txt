@@ -1,0 +1,223 @@
+
+
+====================================
+Strongly Typed View In ASP.NET MVC5:
+====================================
+
+=> Strongly typed view or strongly typed object is used to pass data
+from controller to a view.
+
+
+=> The view which binds with any model is called "Strongly Typed View".
+
+
+=> You can bind any class as a model with view to make it Strongly Typed View.
+
+
+=> You can access model properties on that view.
+
+
+=> You can use data associated with model to render controls.
+
+
+=>  The view that is designed by targeting specific model class object then
+that view is called "Strongly Typed View".
+
+
+=> In Strongly Typed View, the view is bind with corresponding model class object
+or list of object.
+
+
+=> Strongly Typed View also known as "Strongly Typed Object" and
+"Strong Typed Model Object".
+
+
+Note: Strongly Typed View works only with Model.
+
+
+--------------------------------------
+Benefits Of Using Strongly Typed View:
+--------------------------------------
+* Compile Time Error Checking
+* Intellisense
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+~Add Model Class: Right click on Models Folder => Add => Class => Named "Employees" => Add.
+
+~Create Properties of Employee on that class.
+
+
+==========================
+On Employees(Model Class):
+==========================
+
+    public class Employees
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public int Age { get; set; }
+    }
+
+Now, Go to Home Controller and make object of model class to access model class properties.
+But before making object of model class, you need to add namespace to access model class.
+using ApplicationName.FolderName; 
+
+
+===================
+On Home Controller:
+===================
+
+using WebApplication2.Models;
+
+        public ActionResult Index()
+        {
+            Employees emp = new Employees();
+            emp.ID = 11;
+            emp.Name = "Usman";
+            emp.Gender = "Male";
+            emp.Age = 24;
+            return View(emp);
+        }
+
+Now, Go to your Index View and make it as "Strongly Typed View".
+
+
+------------------------------------------------
+Syntax For Making View As "Strongly Typed View":
+------------------------------------------------
+@model ApplicationName.FolderName.ModelClassName
+@model WebApplication2.Models.Employees
+
+Note: "m" of @model should always be in small letter when you are using this syntax
+to make your view as "Strongly Typed View".
+
+
+======================
+On Index.cshtml(View):
+======================
+@model WebApplication2.Models.Employees
+
+
+Now, on your strongly typed view, use keyword "@Model" to access properties of model class.
+
+
+<h3> @Model.ID  </h3>
+
+<h3> @Model.Name  </h3>
+
+<h3> @Model.Age  </h3>
+
+Important Note: When you are making your view as "Strongly Typed View" keep the "m" of @model
+in small letter, but if you are accessing properties of Model class 
+through "@Model" keyword without using lamda expression then keep the "M" of @Model
+in capital letter.
+
+* Model with capital "M" is built-in dynamic property to access Model class properties.
+
+
+You can also pass several object lists to Strongly Typed View.
+
+
+===================
+On Home Controller:
+===================
+
+        public ActionResult Index()
+        {
+            Employees emp = new Employees();
+            emp.ID = 11;
+            emp.Name = "Usman";
+            emp.Gender = "Male";
+            emp.Age = 24;
+
+
+            Employees emp1 = new Employees();
+            emp1.ID = 12;
+            emp1.Name = "Bilal";
+            emp1.Gender = "Male";
+            emp1.Age = 24;
+
+
+            Employees emp2 = new Employees();
+            emp2.ID = 13;
+            emp2.Name = "Rida";
+            emp2.Gender = "Female";
+            emp2.Age = 22;
+
+
+            Employees emp3 = new Employees();
+            emp3.ID = 14;
+            emp3.Name = "Zain";
+            emp3.Gender = "Male";
+            emp3.Age = 23;
+
+
+            List<Employees> obj = new List<Employees>();
+            obj.Add(emp);
+            obj.Add(emp1);
+            obj.Add(emp2);
+            obj.Add(emp3);
+
+            return View(obj);
+        }
+
+
+We returned all Object list to view therefore now we need to write "List" in 
+Strongly Typed View syntax before Application name.
+
+
+------------------------------------------------
+Syntax Of Strongly Typed View For Sinlge Object:
+------------------------------------------------
+@model ApplicationName.FolderName.ModelClassName
+
+
+----------------------------------------------------------------
+Syntax Of Strongly Typed View When You Returned List of Objects:
+----------------------------------------------------------------
+@model List<ApplicationName.FolderName.ModelClassName>
+
+
+======================
+On Index.cshtml(View):
+======================
+@model List<WebApplication2.Models.Employees>
+
+
+<ul>
+    @{ 
+        foreach (var item in Model)
+        {
+            <li> @item.ID </li>
+            <li> @item.Name </li>
+            <li> @item.Gender </li>
+            <li> @item.Age </li>
+        }
+    }
+</ul>
+
+Note: We use dynamic built-in property "Model" to access properties of
+Model Class, that's why we used "Model" keyword in foreach loop to give access to "item"
+through "in" keyword.
+
+
+* For Better understanding, see Full Fledged Program in FullFledgedProgram folder *
+
+
+
+
+
+
+
+
+
+
+
+
+
+     

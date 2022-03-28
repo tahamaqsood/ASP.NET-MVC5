@@ -1,0 +1,94 @@
+@model LoginAndSignup.Models.UserTable
+
+@{
+    ViewBag.Title = "Signup";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #demo
+        {
+            background-image:url(../../images/photo-1529539795054-3c162aab037a.jpg);
+            
+        }
+       
+    </style>
+    <title></title>
+</head>
+<body id="demo">
+
+    <div style="margin-top:30px; margin-left:300px;">
+        @using (Html.BeginForm("Signup", "Home", FormMethod.Post))
+        {
+
+            <p>
+                @Html.LabelFor(model => model.FirstName) &nbsp;
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control",placeholder="Enter First Name" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </p>
+
+
+
+            <p>
+                @Html.LabelFor(model => model.LastName) &nbsp;
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Last Name" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </p>
+
+
+
+            <p>
+                @Html.LabelFor(model => model.Age) &nbsp;
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Age" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </p>
+
+
+
+            <p>
+                <b>Male</b> @Html.RadioButton("Gender", "Male") <b>Female</b> @Html.RadioButton("Gender", "Female")
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </p>
+
+
+
+            <p>
+                @Html.LabelFor(model => model.City) &nbsp;
+                @Html.DropDownListFor(model => model.City, new SelectList(ViewBag.list), "Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </p>
+
+
+            <p>
+                @Html.LabelFor(model => model.Email) &nbsp;
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </p>
+
+
+            <p>
+                @Html.LabelFor(model => model.Password) &nbsp;
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </p>
+
+
+            <p>
+                @Html.LabelFor(model => model.ConfirmPassword) &nbsp;
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Re-Enter Password" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </p>
+
+
+            <input type="submit" value="Signup" class="btn btn-success btn-block" />
+        }
+
+    </div>
+
+
+
+
+
+</body>
+</html>

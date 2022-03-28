@@ -1,0 +1,170 @@
+
+
+
+-------------------------------------
+Search Functionality In ASP.NET MVC5:
+-------------------------------------
+
+=> Create CRUD Application using Database First Approach (Using entity Framework) 
+
+
+=> If you want to create CRUD Application in a short-cut method then select template for Controller.
+
+
+------------------------
+Practical Implementaion:
+------------------------
+After Connecting with Database , Right click on Controller --> Add Controller 
+--> Select Template: "MVC5 Controller with views, using Entity Framework" --> Click on Add
+--> Select model class in model class option (Drop down list) 
+--> Select Context Class in Data Context class option(Drop Down list) 
+--> Remove check from Reference script libraries (Because we don't need script files)
+--> Name your Controller as "HomeController"
+
+
+=> Now, run your project and add some new records if needed.!
+
+
+=> Go to Index.cshtml....
+
+<h2>Index</h2>
+
+<!-- Implementing Search Functionality -->
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+
+    <!-- Heading -->
+    <b> Search By: </b> 
+
+
+    <!--For Radio Buttons-->   
+    @Html.RadioButton("searchBy","Name") <b>Name</b>
+
+
+    @Html.RadioButton("searchBy","Gender") <b>Gender </b>
+
+
+    @Html.RadioButton("searchBy","Above1Lac") <b>Salary Above 1Lac </b>
+
+
+    <!--For Textbox-->
+    @Html.TextBox("search")
+
+
+    <!--For Search Button-->
+    <input type="submit" value="Search" />
+
+}
+
+                    
+
+            XXXXXX__________XXXXXX
+
+
+=> Now, go to HomeController....
+
+ public class HomeController : Controller
+    {
+        AppleCompanyEntities db = new AppleCompanyEntities();
+
+        // GET: Home
+        public ActionResult Index(string searchBy , string search)
+        {
+            if (searchBy=="Name")
+            {
+            // ALTERNATE CODES FOR SEARCHING BY NAME //
+            //Code(1) var data = db.EmployeesTables.Where(model => model.Name == search).ToList();
+            //Code(2) var data = db.EmployeesTables.Where(model => model.Name.StartsWith(search)).ToList();
+           
+                /* Code:2 is more efficient and highly recommended in CRUD Applications */
+
+                var data = db.EmployeesTables.Where(model => model.Name.StartsWith(search)).ToList();
+                return View(data);
+            }
+            else if (searchBy=="Gender")
+            {
+                var data = db.EmployeesTables.Where(model => model.Gender == search).ToList();
+                return View(data);
+            }
+            else if (searchBy=="Above1Lac")
+            {
+                var data = db.EmployeesTables.Where(model => model.Salary > 100000).ToList();
+                return View(data);
+            }
+            else
+            {
+                var data = db.EmployeesTables.ToList();
+                return View(data);
+            }
+        }
+    }
+
+
+
+=> If you want to display "No rows found !!" message whenever user enter invalid name, then use this code on Index.
+
+ <!-- Use this only if you want to display "No rows found message...!" -->
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td>
+                <p>No rows found.!!</p>
+            </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+        }
+    }
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

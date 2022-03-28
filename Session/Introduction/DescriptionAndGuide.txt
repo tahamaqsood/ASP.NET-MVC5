@@ -1,0 +1,123 @@
+
+
+
+
+1st Step: Work in HomeController then retrieve data in Views.
+2nd Step: Increase or Decrease time duration of data of Session in Web Config.
+
+
+Go to Web Config and write this in System.web tag...
+
+<system.web>
+    
+    <!--For Decreasing Session Time Duration-->
+    <sessionState timeout="5"></sessionState>
+    <!--/For Decreasing Session Time Duration-->
+
+</system.web>
+
+
+
+
+-------------------------
+Practical Implementation:
+-------------------------
+
+On Home Controller.....
+
+ public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewData["Value1"] = "Data comes from ViewData";
+            ViewBag.Value2 = "Data comes from ViewBag";
+            TempData["Value3"] = "Data comes from TempData";
+            Session["Value4"] = "Data comes from Session";
+            return View();
+        }
+
+
+                   XXX--------------XXX
+
+
+
+On Index.cshtml.....
+
+
+<div class="jumbotron">
+
+    <h2>THIS IS HOME PAGE</h2>
+
+</div>
+
+
+                   XXX--------------XXX
+
+
+
+
+On About.cshtml.....
+<div class="jumbotron">
+
+    <h2>THIS IS ABOUT PAGE</h2>
+
+</div>
+<h3> ViewData data is = @ViewData["Value1"]</h3>
+<h3> ViewBag data is = @ViewBag.Value2</h3>
+<h3> TempData data is = @TempData["Value3"]</h3>
+<h3> Session data is = @Session["Value4"]</h3>
+
+
+                   XXX--------------XXX
+
+
+On Contact.cshtml.....
+
+<div class="jumbotron">
+
+    <h2>THIS IS CONTACT PAGE</h2>
+
+</div>
+
+<h3> ViewData data is = @ViewData["Value1"]</h3>
+<h3> ViewBag data is = @ViewBag.Value2</h3>
+<h3> TempData data is = @TempData["Value3"]</h3>
+<h3> Session data is = @Session["Value4"]</h3>
+
+
+                   XXX--------------XXX
+
+
+On WebConfig.....
+
+<system.web>
+    
+    <!--For Decreasing Session Time Duration-->
+    <sessionState timeout="5"></sessionState>
+    <!--/For Decreasing Session Time Duration-->
+
+</system.web>
+
+
+
+                   XXX--------------XXX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

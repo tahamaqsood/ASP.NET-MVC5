@@ -1,0 +1,33 @@
+
+
+
+-------------
+@Url.Action()
+-------------
+
+=> You can generate link for your desire web page on texts by using Url.Action
+
+=> You can linked some texts with your web page through @Url.Action.
+
+
+Syntax:   <a href="@Url.Action("ActionMethod Name" , "Controller Name")"> Some Texts </a>
+
+
+Example:  <a href="@Url.Action("About" , "Home")"> Go to about page </a>
+
+
+
+
+Note: Controller name is optional. If you have only 1 Controller in your project
+then there is no need to write controller name. Use this Syntax instead.
+
+
+
+
+Syntax:   <a href="@Url.Action("ActionMethod Name")"> Some Texts </a>
+
+
+Example:  <a href="@Url.Action("About")"> Go to about page </a>
+
+
+

@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace TypeCastingInSession
+{
+    public class HomeController : Controller
+    {
+        // Type Casting in Session....
+        public ActionResult Index()
+        {
+            string[] StudentNames = new string[] { "Ali", "Bilal", "Usman", "Raheel", "Talha" };
+            Session["Names"] = StudentNames;
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}

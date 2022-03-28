@@ -1,0 +1,78 @@
+<div class="container">
+        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Add Employee</a>
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="" class="close" data-dissmiss="modal">&times;</a>
+                        <h2 class="modal-title" style="text-align:center;">Add New Record</h2>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="myForm">
+                            <p>
+                                @Html.LabelFor(x => x.EmpName) &nbsp;
+                                @Html.TextBoxFor(x => x.EmpName, new { @class = "form-control", placeholder = "Enter Name" })
+                                @Html.ValidationMessageFor(x => x.EmpName, "", new { @class = "text-danger" })
+                            </p>
+
+
+                            <p>
+                                @Html.LabelFor(x => x.EmpAge) &nbsp;
+                                @Html.TextBoxFor(x => x.EmpAge, new { @class = "form-control", placeholder = "Enter Age" })
+                                @Html.ValidationMessageFor(x => x.EmpAge, "", new { @class = "text-danger" })
+                            </p>
+
+
+                            <p>
+                                @Html.LabelFor(x => x.EmpGender) &nbsp;
+                                @Html.TextBoxFor(x => x.EmpGender, new { @class = "form-control", placeholder = "Enter Gender" })
+                                @Html.ValidationMessageFor(x => x.EmpGender, "", new { @class = "text-danger" })
+                            </p>
+
+
+                            <p>
+                                @Html.LabelFor(x => x.EmpSalary) &nbsp;
+                                @Html.TextBoxFor(x => x.EmpSalary, new { @class = "form-control", placeholder = "Enter Salary" })
+                                @Html.ValidationMessageFor(x => x.EmpSalary, "", new { @class = "text-danger" })
+                            </p>
+
+
+                            <p>
+                                @Html.LabelFor(x => x.EmpCity) &nbsp;
+                                @Html.TextBoxFor(x => x.EmpCity, new { @class = "form-control", placeholder = "Enter City" })
+                                @Html.ValidationMessageFor(x => x.EmpCity, "", new { @class = "text-danger" })
+                            </p>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="btn btn-default" data-dissmiss="modal">Cancel</a>
+                        <input type="reset" value="Submit" class="btn btn-info" id="btnSubmit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--JQuery And Ajax-->
+    <script>
+        $(document).ready(function()
+        {
+            $("#btnSumbit").click(function()
+            {
+                var myformdata = $("myForm").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Index",
+                    data: myformdata,
+                    success: function()
+                    {
+                        $("#myModal").modal("hide");
+                    }
+                })
+             })
+        })
+    </script>

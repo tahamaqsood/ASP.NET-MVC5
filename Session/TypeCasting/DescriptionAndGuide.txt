@@ -1,0 +1,125 @@
+
+
+
+
+
+Work in Home Controller and then retrieve data in Views.
+
+
+
+------------------------
+Practical Implementaion:
+------------------------
+
+===================
+On Home Controller:
+===================
+
+ public class HomeController : Controller
+    {
+        // Type Casting in Session....
+        public ActionResult Index()
+        {
+            string[] StudentNames = new string[] { "Ali", "Bilal", "Usman", "Raheel", "Talha" };
+            Session["Names"] = StudentNames;
+            return View();
+        }
+
+
+                             XXX_____XXX
+
+================
+On Index.cshtml:
+================
+
+
+<div class="jumbotron">
+
+    <h2> THIS IS HOME PAGE</h2>
+
+</div>
+
+<ul>
+
+    @foreach (var item in (string[])Session["Names"])
+    {
+        <li>@item</li>
+    }
+
+</ul>
+
+
+
+                             XXX_____XXX
+
+================
+On About.cshtml:
+================
+
+
+
+<div class="jumbotron">
+
+    <h2> THIS IS ABOUT PAGE</h2>
+
+</div>
+
+
+<ul>
+
+    @foreach (var item in (string[])Session["Names"])
+    {
+        <li>@item</li>
+    }
+
+</ul>
+
+
+                             XXX_____XXX
+
+==================
+On Contact.cshtml:
+==================
+
+
+
+<div class="jumbotron">
+
+    <h2> THIS IS CONTACT PAGE</h2>
+
+</div>
+
+
+<ul>
+
+    @foreach (var item in (string[])Session["Names"])
+    {
+        <li>@item</li>
+    }
+
+</ul>
+
+
+                             XXX_____XXX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

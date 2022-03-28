@@ -1,0 +1,73 @@
+
+
+
+--------
+ViewBag:
+--------
+
+=> ViewBag is a dynamic property.
+
+=> ViewBag is used to pass data from Controller to a view similar to ViewData.
+
+=> We can assign any name to property.
+
+=> ViewBag doesn't need type casting unlike ViewData, Tempdata and Session. 
+
+
+
+-------------------------
+Syntax And Implementaion:
+-------------------------
+
+==============
+On Controller:
+==============
+
+        public ActionResult Index()
+        {
+            //User Information//
+            ViewBag.Name = "Usman";
+            ViewBag.Age = 24;
+            ViewBag.Gender = "Male";
+
+
+            //For Array//
+            string[] Fruits = new string[] { "Banana","Mango","Apple","Orange","Grapes" };
+            ViewBag.MyFruits = Fruits;
+            return View();
+        }
+
+
+
+========
+On View:
+========
+
+<!--User Information-->
+<h1>User Information</h1>
+
+
+<p>User name is @ViewBag.Name</p> 
+
+<p>User Age is @ViewBag.Age</p>
+
+<p>User Gender is @ViewBag.Gender</p>
+
+
+
+
+
+
+<!-- For Array -->
+@*Type Casting is not needed in ViewBag for printing Array values through loop.*@
+<h1>For Array</h1>
+
+@foreach(var item in ViewBag.MyFruits)
+{
+    <p>@item</p> 
+}
+
+
+
+
+

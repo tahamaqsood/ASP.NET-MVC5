@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace WebApplication13.Models
+{
+    public class Doctors
+    {
+        //Shortcut  = prop and double tab to make Attributes (Properties)
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public string Shift { get; set; }
+        /* Now , Right Click on Model or on Controller to add Controller,
+           select MVC5 Controller with read and write action */
+
+    }
+}

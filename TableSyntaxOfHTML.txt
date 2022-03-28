@@ -1,0 +1,41 @@
+
+
+
+
+<!--For Making Table-->
+
+<div class="jumbotron">
+
+        <table style="width:100%">
+
+            <!-- 1st Row -->
+            <tr>
+                <th> Name   </th> <!-- 1st Column -->
+                <th> Age    </th> <!-- 2nd Column -->
+                <th> Gender </th> <!-- 3rd Column -->
+            </tr>
+            <!--/ 1st Row -->
+
+
+
+            <!-- 2nd Row-->
+            <tr>
+                <td> Usman</td> <!-- 1st Column -->
+                <td> 24   </td> <!-- 2nd Column -->
+                <td> Male </td> <!-- 3rd Column -->
+            </tr>
+            <!--/ 2nd Row-->    
+
+
+
+            <!-- 3rd Row -->
+            <tr>
+                <td> Rida   </td> <!-- 1st Column -->
+                <td> 22     </td> <!-- 2nd Column -->
+                <td> Female </td> <!-- 3rd Column -->
+            </tr>
+            <!--/ 3rd Row -->
+
+
+        </table>
+    </div>

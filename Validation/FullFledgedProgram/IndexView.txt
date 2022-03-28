@@ -1,0 +1,46 @@
+<!--Using Anonymous type method to change color of error message from black to red-->
+
+<p> @Html.ValidationSummary("", new
+{
+    @class = "text-danger"
+}) </p>
+
+@* Note: We left Validation Summary name empty because we don't need it
+and we cannot implement Anonymous type without "over-loaded" version of Html Helper. *@
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+
+               <!--For Name-->
+    <p>Enter Name:  @Html.TextBox("Name", "", new
+               {
+                   @class = "form-control",
+                   placeholder="Name"
+               })
+   <b style="color:red;">@ViewData["NameError"]</b></p>
+
+       
+               <!--For Age-->
+    <p>Enter Age:   @Html.TextBox("Age","", new
+               {
+                   @class = "form-control",
+                   placeholder = "Age"
+               })
+   <b style="color:red;"> @ViewData["AgeError"]</b></p>
+
+
+               <!--For Email-->
+    <p>Enter Email: @Html.TextBox("Email","", new
+               {
+                   @class = "form-control",
+                   placeholder = "Email"
+               })
+   <b style="color:red;"> @ViewData["EmailError"]</b></p>
+
+
+               <!--For Submit Button -->
+
+    @*If you want to create standard and "Blue-Colored" Submit button
+      then use class "btn btn-info"*@
+      <input type="submit" value="Submit" class="btn btn-info"/>
+}

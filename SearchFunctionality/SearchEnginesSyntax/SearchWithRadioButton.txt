@@ -1,0 +1,61 @@
+
+
+--------------
+On Index View:
+--------------
+
+<h2>Index</h2>
+
+<!-- Implementing Search Functionality -->
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+
+    <!-- Heading -->
+    <b> Search By Gender: </b> 
+
+
+    <!--For Radio Buttons-->   
+
+    @Html.RadioButton("Gender","Male")   <b>Male</b>
+
+    @Html.RadioButton("Gender","Female") <b>Female</b>
+
+
+    <!--For Search Button-->
+    <input type="submit" value="Search" />
+
+}
+
+                    
+
+            XXXXXX__________XXXXXX
+
+-------------------
+On Home Controller:
+-------------------
+
+ public class HomeController : Controller
+    {
+        AppleCompanyEntities db = new AppleCompanyEntities();
+
+        // GET: Home
+        public ActionResult Index(string Gender)
+        {
+            if (Gender=="Male")
+            {
+                var data = db.EmployeesTables.Where(model => model.Gender=="Male").ToList();
+                return View(data);
+            }
+            else if (Gender=="Female")
+            {
+                var data = db.EmployeesTables.Where(model => model.Gender =="Female").ToList();
+                return View(data);
+            }
+            else
+            {
+                var data = db.EmployeesTables.ToList();
+                return View(data);
+            }
+        }
+    }

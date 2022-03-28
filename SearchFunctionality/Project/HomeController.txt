@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using CRUDApplication.Models;
+
+namespace CRUDApplication.Controllers
+{
+    public class HomeController : Controller
+    {
+        AppleCompanyEntities db = new AppleCompanyEntities();
+
+        // GET: Home
+        public ActionResult Index(string searchBy , string search)
+        {
+            if (searchBy=="Name")
+            {
+            // ALTERNATE CODES FOR SEARCHING BY NAME //
+            //Code(1) var data = db.EmployeesTables.Where(model => model.Name == search).ToList();
+            //Code(2) var data = db.EmployeesTables.Where(model => model.Name.StartsWith(search)).ToList();
+           
+                /* Code:2 is more efficient and highly recommended in CRUD Applications */
+
+                var data = db.EmployeesTables.Where(model => model.Name.StartsWith(search)).ToList();
+                return View(data);
+            }
+            else if (searchBy=="Gender")
+            {
+                var data = db.EmployeesTables.Where(model => model.Gender == search).ToList();
+                return View(data);
+            }
+            else if (searchBy=="Above1Lac")
+            {
+                var data = db.EmployeesTables.Where(model => model.Salary > 100000).ToList();
+                return View(data);
+            }
+            else
+            {
+                var data = db.EmployeesTables.ToList();
+                return View(data);
+            }
+        }
+
+
+

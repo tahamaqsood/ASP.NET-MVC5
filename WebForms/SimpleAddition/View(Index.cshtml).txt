@@ -1,0 +1,18 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="margin:100px;">
+    <form action="/" method="post">
+
+        <input type="text" name="val1"/>
+        <input type="text" name="val2"/>
+        <input type="submit"name="sub" value="Add" />
+
+    </form>
+     
+    <h2>Result is: @ViewData["result"]</h2>
+    
+
+
+</div>

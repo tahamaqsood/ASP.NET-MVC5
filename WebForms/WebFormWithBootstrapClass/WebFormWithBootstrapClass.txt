@@ -1,0 +1,77 @@
+
+<!-- Web Form With Bootstrap class -->
+
+
+<div style="margin-top:100px;">
+
+    <!--Opening Form-->
+@{
+    Html.BeginForm("Index", "Home", FormMethod.Get);
+ }
+    
+    <!--For User name-->
+    @Html.Label("User name") &nbsp; 
+    @Html.TextBox("Name","",new
+{
+    placeholder="Name",
+    @class = "form-control"
+})
+
+    <br />
+
+    <!--For Password-->
+    @Html.Label("Password") &nbsp; 
+
+    @Html.Password("Pass","",new
+{
+    placeholder="Password",
+    @class="form-control"
+})
+
+    <br />
+
+    <!--Radio Button for Gender Selection-->
+    @Html.Label("Male") &nbsp;
+    @Html.RadioButton("Gender","Male")
+    @Html.Label("Female") &nbsp;
+    @Html.RadioButton("Gender","Female")
+
+    <br />
+
+    <!--For Drop Down List-->
+    @Html.Label("Country") &nbsp;
+    @Html.DropDownList("Countries",new SelectList(new[] { "Pakistan","Russia","China","USA"}),"Select",
+    new {
+        @class = "form-control"
+    })
+
+    <br />
+
+    <!--For Comments-->
+    @Html.Label("Comments") &nbsp;
+    @Html.TextArea("CommentArea",new
+{
+    @class ="form-control"
+})
+
+    <br />
+
+    <!--For Check box-->
+    @Html.CheckBox("Accept") &nbsp;
+    @Html.Label("I accept all terms and policies")
+
+    <br />
+
+    <!--For Submit button-->
+    <input type="submit" value="Submit" class="form-control" />
+
+
+    @{ 
+        Html.EndForm();
+    }
+    <!--Closing Form-->
+
+
+    </div>
+
+

@@ -1,0 +1,215 @@
+@model WebForm.Models.Doctor
+
+<!--For displaying alert message after submission of Web Form-->
+@Html.Raw(ViewData["success"])
+
+
+
+<!--Web Form Started-->
+@using (Html.BeginForm("Index", "Home"))
+{
+
+    <!--For ID-->
+    <p>
+    @Html.LabelFor(model=>model.DoctorID)
+
+
+    @Html.TextBoxFor(model=>model.DoctorID,new
+{
+    @class = "form-control",
+    placeholder="Enter ID"
+})
+
+
+    @Html.ValidationMessageFor(model=>model.DoctorID,"",new
+{
+    @class = "text-danger"
+})
+        </p>
+
+
+    <!--For Name-->
+    <p>
+        @Html.LabelFor(model => model.DoctorName)
+
+
+        @Html.TextBoxFor(model => model.DoctorName, new
+   {
+       @class = "form-control",
+       placeholder = "Enter Name"
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorName, "", new
+{
+    @class = "text-danger"
+})
+        </p>
+
+
+        <!--For Age-->
+    <p>
+        @Html.LabelFor(model => model.DoctorAge)
+
+
+        @Html.TextBoxFor(model => model.DoctorAge, new
+   {
+       @class = "form-control",
+       placeholder = "Enter Age"
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorAge, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+        <!--For Gender-->
+    <p>   
+    <b>Male</b>     @Html.RadioButtonFor(model=>model.DoctorGender,"Gender")
+    <b>Female</b>   @Html.RadioButtonFor(model => model.DoctorGender, "Gender")
+     @*For Line Break*@ <br />
+
+        @Html.ValidationMessageFor(model => model.DoctorGender, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+
+        <!--For Address-->
+    <p>
+        @Html.LabelFor(model => model.DoctorAddress)
+
+
+        @Html.EditorFor(model => model.DoctorAddress, new
+   {
+       htmlAttributes = new { @class = "form-control" }
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorAddress, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+
+        <!--For Email-->
+    <p>
+        @Html.LabelFor(model => model.DoctorEmail)
+
+
+        @Html.TextBoxFor(model => model.DoctorEmail, new
+   {
+       @class = "form-control",
+       placeholder = "Enter Email"
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorEmail, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+
+        <!--For Password-->
+    <p>
+        @Html.LabelFor(model => model.DoctorPassword)
+
+
+        @Html.EditorFor(model => model.DoctorPassword, new
+   {
+       htmlAttributes = new
+       {
+           @class = "form-control",
+           placeholder = "Enter Password"
+       }
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorPassword, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+
+        <!--For Confirm Password-->
+    <p>
+        @Html.LabelFor(model => model.DoctorConfirmPassword)
+
+
+        @Html.EditorFor(model => model.DoctorConfirmPassword, new
+   {
+       htmlAttributes = new
+       {
+           @class = "form-control",
+           placeholder = "Re Enter Password"
+       }
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorConfirmPassword, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+
+        <!--For Date Of Birth-->
+    <p>
+        @Html.LabelFor(model => model.DoctorDateOfBirth)
+
+
+        @Html.EditorFor(model => model.DoctorDateOfBirth, new
+   {
+       htmlAttributes = new { @class = "form-control" }
+   })
+
+
+        @Html.ValidationMessageFor(model => model.DoctorDateOfBirth, "", new
+   {
+       @class = "text-danger"
+   })
+        </p>
+
+
+        <!--For Check Box-->
+<p>
+    @Html.CheckBoxFor(model => model.CheckBox, "CheckBox")
+
+     
+    @Html.LabelFor(model=>model.CheckBox)
+    @*For Line Break*@ <br />
+   
+    @Html.ValidationMessageFor(model => model.CheckBox, "", new
+{
+    @class = "text-danger"
+})
+        </p>
+
+
+    <!--For Organization-->
+    <p>
+        @Html.LabelFor(model => model.DoctorOrganizationName)
+
+
+        @Html.TextBoxFor(model => model.DoctorOrganizationName, new
+{
+    @class = "form-control",
+    @Value = "Agha Khan Hospital",
+    @readonly = true
+})
+        </p>
+
+
+                    <!--For For Submit Button-->
+        <input type="submit" value="Submit" class="btn btn-success" />
+
+
+}                     <!--Form Ended-->
+
+

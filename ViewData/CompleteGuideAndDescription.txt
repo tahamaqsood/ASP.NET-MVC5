@@ -1,0 +1,74 @@
+
+
+
+---------
+ViewData:
+---------
+
+=> You can use ViewData to pass data from Controller ot a view.
+
+=> ViewData is a dictionary of objects that is derived from the View Dictionary class.
+
+=> The object in ViewData are stored as Key-Value pairs that are accessible through
+the keys.
+
+
+Note: "Key" is a string value to identify the object present in ViewData.
+"Value" is the object present in ViewData.
+
+
+Important Point: ViewData needs Type casting in some scenarios.
+
+
+--------------------------
+Syntax And Implementation:
+--------------------------
+
+==============
+On Controller:
+==============
+
+        public ActionResult Index()
+        {
+            //User Information//
+            ViewData["Name"] = "Usman";
+            ViewData["Age"] = 24;
+            ViewData["Gender"] = "Male";
+
+
+            //For Array//
+            string[] Fruits = new string[] { "Banana","Mango","Apple","Orange","Grapes" };
+            ViewData["MyFruits"] = Fruits;
+            return View();
+        }
+
+
+========
+On View:
+========
+
+<!--User Information-->
+<h1>User Information</h1>
+
+
+<p>User name is @ViewData["Name"]</p> 
+
+
+<p>User Age is @ViewData["Age"]</p>
+
+
+<p>User Gender is @ViewData["Gender"]</p>
+
+
+
+
+
+
+<!-- For Array -->
+@*Type Casting is needed in ViewData while printing Array through Loop*@
+<h1>For Array</h1>
+
+@foreach (var item in (string[])ViewData["MyFruits"])
+{
+    <p>@item</p>
+}

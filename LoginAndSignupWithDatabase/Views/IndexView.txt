@@ -1,0 +1,7 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1 style="font-weight:900; letter-spacing:10px;">WELCOME HERE</h1>
+
+<a class="btn btn-danger" href="@Url.Action("Logout","Home")">Logout</a>

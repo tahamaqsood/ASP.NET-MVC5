@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication4.Models;
+
+namespace WebApplication4.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            //For name
+            ViewData["MyName"] = "Usman";
+
+            //For age
+            int age = 24;
+            ViewData["MyAge"] = age;
+
+            //For date
+            ViewData["CurrentTime"] = DateTime.Now.ToLongTimeString();
+
+            //For Array
+            string[] Shakes = { "Mango Shake", "Bnana Shake", "Chocolate Shake", "Vanilla Shake" };
+            ViewData["MyShakes"] = Shakes;
+
+
+            //For list
+            ViewData["MySports"] = new List<string>()
+            {
+                "Cricket","Football","Hockey","Baseball","Tennis"
+            };
+
+            //For Employee Ali..
+            Employee Ali = new Employee();
+            Ali.EmpID = 91;
+            Ali.EmpName = "Ali Gujjar";
+            Ali.EmpDesignation = "Manager";
+            ViewData["EmployeeAli"] = Ali;
+
+
+            //For Employee Bilal..
+            Employee Bilal = new Employee();
+            Bilal.EmpID = 92;
+            Bilal.EmpName = "Bilal Amir";
+            Bilal.EmpDesignation = "Assistant Manager";
+            ViewData["EmployeeBilal"] = Bilal;
+
+
+
+            //For Employee Usman..
+            Employee Usman = new Employee();
+            Usman.EmpID = 93;
+            Usman.EmpName = "Usman Hameed";
+            Usman.EmpDesignation = "JM";
+            ViewBag.EmployeeUsman = Usman; //Now using ViewBag for Usman..
+
+            string[] PSL_Teams = { "United","Kings","Zalmi","Sultans","Qalanders","Gladiators" };
+            ViewBag.PslTeams = PSL_Teams;
+            return View();
+        }
+    }
+}

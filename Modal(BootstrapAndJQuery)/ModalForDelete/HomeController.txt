@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using AppleCompany.Models;
+using System.Data.Entity;
+
+namespace AppleCompany.Controllers
+{
+    public class HomeController : Controller
+    {
+        CompanyEntities obj = new CompanyEntities();
+        public ActionResult Index()
+        {
+            var data = obj.Employees.ToList();
+            return View(data);
+        }
+
+        public JsonResult DeleteEmployee(int EmployeeId)
+        {
+            var data = obj.Employees.Where(x => x.ID == EmployeeId).FirstOrDefault();
+            if (data!=null)
+            {
+                obj.Entry(data).State = EntityState.Deleted;
+                obj.SaveChanges();
+            }
+            return Json(JsonRequestBehavior.AllowGet);
+        }
+       
+
+       
+    }
+}

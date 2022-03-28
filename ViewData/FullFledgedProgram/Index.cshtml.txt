@@ -1,0 +1,97 @@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<!--For Info-->
+<h2><b>My Info</b></h2>
+
+@{ 
+    <h2>@ViewData["MyName"]</h2>
+
+    <h2>@ViewData["MyAge"]</h2>
+
+    <h2>@ViewData["CurrentTime"]</h2>
+}
+
+
+<!--For Shakes-->
+<h2><b>Shakes</b></h2>
+<ul>
+    @{
+        //We can also use var keyword which supports all data types but it has also need of type casting
+        //Because it is ViewData therefore ViewData needs TypeCasting
+        foreach (string item in (string[])@ViewData["MyShakes"])
+        {
+           <li> <b> @item </b></li>
+        }
+
+     }
+</ul>
+
+<!--For Sports-->
+<h2><b>Sports</b></h2>
+
+<ul>
+    @{ 
+        //We can use var keyword or actual data type just like we write string type in foreach. Its upto our choice.
+        //But in both ways we have to do type casting.
+        foreach (string item in (List<string>)ViewData["MySports"])
+        {
+            <li><b>@item</b></li>
+        }
+    }
+</ul>
+
+<!--For PSL TEAMS-->
+<h2> <b>PSL TEAMS </b></h2>
+<ul>
+    @{
+        //It is ViewBag so it does not need Type casting of data type
+        foreach (string item in ViewBag.PslTeams)
+        {
+            <li>@item</li>
+        }
+    }
+</ul>
+
+
+<!--For Employee Details-->
+<h2><b> Employee Details </b></h2>
+
+<!--Type casting of class is necessary in ViewData as well as in ViewBag too-->
+
+
+@{
+    <h2><b>Details Of Ali</b></h2>
+//Type cast = Namespace Name.Folder.ClassName
+    var a = (WebApplication4.Models.Employee)ViewData["EmployeeAli"];
+    //Displaying details of Ali...
+    <p> @a.EmpID </p>
+    <p> @a.EmpName </p>
+    <p> @a.EmpDesignation </p>
+
+
+
+
+    <h2><b>Details Of Bilal</b></h2>
+//Type cast = Namespace Name.Folder.ClassName
+    var b = (WebApplication4.Models.Employee)ViewData["EmployeeBilal"];
+    //Displaying Details of Bilal...
+    <p>@b.EmpID</p>
+    <p>@b.EmpName</p>
+    <p>@b.EmpDesignation</p>
+
+
+
+
+    <h2><b>Details Of Usman</b></h2>
+//Type cast = Namespace Name.Folder.ClassName
+    var u = (WebApplication4.Models.Employee)ViewBag.EmployeeUsman;
+    //Displaying details of Usman...
+    <p> @u.EmpID </p>
+    <p> @u.EmpName </p>
+    <p> @u.EmpDesignation </p>
+}
+

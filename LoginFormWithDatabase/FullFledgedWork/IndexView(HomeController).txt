@@ -1,0 +1,4 @@
+<h1>Welcome @Session["Success"] !!</h1>
+
+
+<a class="btn btn-danger" href="@Url.Action("Logout","Login")">Logout</a>

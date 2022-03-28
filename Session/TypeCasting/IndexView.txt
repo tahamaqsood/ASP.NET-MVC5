@@ -1,0 +1,16 @@
+
+
+<div class="jumbotron">
+
+    <h2> THIS IS HOME PAGE</h2>
+
+</div>
+
+<ul>
+
+    @foreach (var item in (string[])Session["Names"])
+    {
+        <li>@item</li>
+    }
+
+</ul>

@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Collections;
+
+namespace navbaer2.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            //Array
+            int[] std_ids = { 91, 92, 93, 94, 95 };
+            string[] names = { "Ali", "Bilal", "Shahzaib", "Usman", "Raheel" };
+            ViewBag.Ids = std_ids;
+            ViewBag.Names = names;
+
+            return View();
+        }
+        //About
+        public ActionResult About()
+        {
+            ViewData["SportsList"] = new List<string>()
+            {
+                "Cricket","FootBall","VolleyBall","Hockey","BaseBall"
+            };
+
+            return View();
+        }
+        //Details
+        public ActionResult Details()
+        {
+            ArrayList obj = new ArrayList();
+            obj.Add("Bilal");
+            obj.Add("Manager");
+            obj.Add(25000);
+            obj.Add(1971.02f);
+            obj.Add('$');
+
+            ViewBag.EmployeeDetails = obj;
+
+            return View();
+        }
+
+    }
+}

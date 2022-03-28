@@ -1,0 +1,7 @@
+
+
+<div class="jumbotron">
+
+    <h2>THIS IS HOME PAGE</h2>
+
+</div>

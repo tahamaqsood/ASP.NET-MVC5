@@ -1,0 +1,28 @@
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<h2>This is details section</h2>
+
+<div class="container">
+    <div class="navbar-brand">
+
+        <span> @Html.ActionLink("Home", "Home","Home")</span>
+
+        <span> @Html.ActionLink("About", "About","Home")</span>
+
+        <span> @Html.ActionLink("Details", "Details","Home")</span>
+        @{ 
+            foreach (var item in ViewBag.EmployeeDetails)
+            {
+                <p>@item</p>
+            }
+        }
+
+
+    </div>
+
+
+</div>

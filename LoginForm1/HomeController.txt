@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace LoginForm1.Controllers
+{
+    
+    public class HomeController : Controller
+    {
+        
+        public ActionResult Index()
+        {
+            return View();
+        }
+       [HttpPost]
+       public ActionResult Index(string UserName, string UserPassword)
+        {
+            //Hard Coded
+            string uname = "Usman Hameed";
+            string upassword = "Gray Hat";
+            string success = "Login Successful....!";
+            string fail = "Login Failed....!";
+            //ViewBags
+            ViewBag.uname = uname;
+            ViewBag.upassword = upassword;
+            ViewBag.success = success;
+            ViewBag.fail = fail;
+            //Parameters storing in ViewBag
+            ViewBag.UserName = UserName;
+            ViewBag.UserPassword = UserPassword;
+            return View();
+        }
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}

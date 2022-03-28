@@ -1,0 +1,23 @@
+
+
+
+
+
+=========== @Html.Raw() ===========
+Description: 
+   You can use @Html.Raw() if you are doing scripting in your Controller and want to show scripting in your view.
+
+
+
+For Example: 
+
+=====On Home Controller======
+TempData["Message"] = "<script>alert('Data inserted')</script>";
+
+
+
+=====On View=====
+<h2> Index </h2>
+@Html.Raw(TempData["Message"])
+
+ 

@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using LoginAndSignup.Models;
+
+namespace LoginAndSignup.Controllers
+{
+    public class HomeController : Controller
+    {
+        LoginFormEntities obj = new LoginFormEntities();
+        public ActionResult Index()
+        {
+            if (Session["Email"]==null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(UserTable u)
+        {
+            var data = obj.UserTables.Where(x => x.Email == u.Email && x.Password == u.Password).FirstOrDefault();
+            if (data!=null)
+            {
+                Session["Email"] = u.Email;
+                return RedirectToAction("Index", "Home");              
+            }
+            else
+            {
+                TempData["LoginFailed"] = "<script>alert('Invalid email or password')</script>";
+            }
+            return View();
+        }
+
+        public ActionResult Signup()
+        {
+            var list = new List<string>()
+            {
+                "Karachi","Lahore","Islamabad","Faisalabad","Peshawar","Quetta"
+            };
+            ViewBag.list = list;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Signup(UserTable u)
+        {
+            if (ModelState.IsValid==true)
+            {
+                obj.UserTables.Add(u);
+                int value = obj.SaveChanges();
+                if (value>0)
+                {
+                    TempData["Registeration"] = "<script>alert('Thank you for registration.!')</script>";
+                    return RedirectToAction("Login", "Home");
+                }
+                else
+                {
+                    TempData["Registeration"] = "<script>alert('Registration Failed.!')</script>";
+                }
+            }
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Home");
+        }
+
+       
+    }
+}

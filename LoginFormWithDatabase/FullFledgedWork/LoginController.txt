@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using LoginForm.Models;
+
+namespace LoginForm.Controllers
+{
+    public class LoginController : Controller
+    {
+        LoginDBEntities obj = new LoginDBEntities();
+        // GET: Login
+        public ActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(UserTable u)
+        {
+            if (ModelState.IsValid == true)
+            {
+                var data = obj.UserTables.Where(x => x.UserName == u.UserName && x.Email == u.Email && x.Password == u.Password).FirstOrDefault();
+                if (data == null)
+                {
+                    ViewBag.ErrorMessage = "Login Failed...!";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    Session["Success"] = u.UserName;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");     
+        }
+    }
+}

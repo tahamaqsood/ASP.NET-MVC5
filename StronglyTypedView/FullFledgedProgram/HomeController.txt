@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication2.Models;
+
+namespace WebApplication2.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            Employees emp = new Employees();
+            emp.ID = 11;
+            emp.Name = "Usman";
+            emp.Gender = "Male";
+            emp.Age = 24;
+
+            Employees emp1 = new Employees();
+            emp1.ID = 12;
+            emp1.Name = "Bilal";
+            emp1.Gender = "Male";
+            emp1.Age = 24;
+
+            Employees emp2 = new Employees();
+            emp2.ID = 12;
+            emp2.Name = "Rida";
+            emp2.Gender = "Female";
+            emp2.Age = 22;
+
+            Employees emp3 = new Employees();
+            emp3.ID = 12;
+            emp3.Name = "Rida";
+            emp3.Gender = "Female";
+            emp3.Age = 22;
+
+            List<Employees> obj = new List<Employees>();
+            obj.Add(emp);
+            obj.Add(emp1);
+            obj.Add(emp2);
+            obj.Add(emp3);
+            return View(obj);
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}

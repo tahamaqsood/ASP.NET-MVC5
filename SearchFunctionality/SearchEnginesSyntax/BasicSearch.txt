@@ -1,0 +1,47 @@
+
+
+
+
+On Index.cshtml....
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+
+    <!-- For TextBox with Placeholder -->
+    <input type="text" name="search" placeholder="Search Here" />
+
+
+
+    <!-- For Submit Button-->
+    <input type="submit" value="Search" />
+}
+
+
+
+-----------------------------------------------------------
+
+
+On Home Controller....
+
+
+public class HomeController : Controller
+    {
+        DoctorContext db = new DoctorContext();
+        public ActionResult Index(string search)
+        {
+            if (search!=null)
+            {
+            //Alternate codes for searching By name
+            //Code(1) var data = db.DoctorTable.Where(model => model.Name == search).ToList();
+            //Code(2) var data = db.DoctorTable.Where(model => model.Name.StartsWith(search)).ToList();
+           
+                /* Code:2 is more efficient and highly recommended in CRUD Applications */
+                var data = db.DoctorTable.Where(model => model.Name.StartsWith(search)).ToList();
+                return View(data);
+            }
+            else
+            {
+                var row = db.DoctorTable.ToList();
+                return View(data);
+            }             
+        }

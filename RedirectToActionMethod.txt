@@ -1,0 +1,18 @@
+
+
+
+
+
+
+                 
+
+============== R E D I R E C T   T O   A C T I O N ==============
+Description:
+    This method will take you to your desire Web page after the action has done.
+
+
+
+Syntax:
+
+    return RedirectToAction("Your ActionResult name");
+    return RedirectToAction("Index");

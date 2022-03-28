@@ -1,0 +1,244 @@
+
+
+------------------------------------------------------------------
+Validation Message And Vaildation Summary Helpers In ASP.NET MVC5:
+------------------------------------------------------------------
+
+-------------------
+Validation Message:
+-------------------
+
+=> The Html.ValidationMessage() is an extension method that is loosely typed method.
+
+=> It displays a validation message if an error exists for the specified field in the
+ModelStateDictionary object.
+
+
+-------------------
+Validation Summary:
+-------------------
+
+=> The Html.ValidationSummary() helper method generates an un-ordered list of
+validation messages that are in the ModelStateDictionary object.
+
+=> The Validation Summary can be used to display all error messages for all the fields.
+
+=> It can also be used to display custom error messages similar to ValidationMessage helper.
+
+
+
+
+----------------------------------------------------------
+Syntax And Practical Implementation For VaildationMessage:
+----------------------------------------------------------
+
+================
+On Index.cshtml:
+================
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+       <!--For Name-->
+    <p>Enter Name:  @Html.TextBox("Name")
+        @Html.ValidationMessage("Name")</p>
+
+       <!--For Age-->
+    <p>Enter Age:   @Html.TextBox("Age")
+        @Html.ValidationMessage("Age")</p>
+
+       <!--For Email-->
+    <p>Enter Email: @Html.TextBox("Email")
+        @Html.ValidationMessage("Email")</p>
+
+       <!--For Button-->
+      <input type="submit" value="Submit"/>
+}
+
+
+
+==============
+On Controller:
+==============
+
+        public ActionResult Index()
+        {                
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(string Name, string Age,string Email)
+        {
+            if (Name.Equals("") == true)
+            {
+                ModelState.AddModelError("Name", "Name is required!!");
+            }
+
+            if (Age.Equals("") == true)
+            {
+                ModelState.AddModelError("Age", "Age is required!!");
+            }
+
+            if (Email.Equals("") == true)
+            {
+                ModelState.AddModelError("Email", "Email is required!!");
+            }
+            return View();
+        }
+
+
+
+----------------------------------------------------------
+Syntax And Practical Implementation For VaildationSummary:
+----------------------------------------------------------
+
+================
+On Index.cshtml:
+================
+
+<p> @Html.ValidationSummary() </p>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+               <!--For Name-->
+    <p>Enter Name:  @Html.TextBox("Name")</p>
+       
+               <!--For Age-->
+    <p>Enter Age:   @Html.TextBox("Age")</p>
+
+               <!--For Email-->
+    <p>Enter Email: @Html.TextBox("Email")</p>
+
+               <!--For Button-->
+      <input type="submit" value="Submit"/>
+}
+
+
+
+==============
+On Controller:
+==============
+
+        public ActionResult Index()
+        {                
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(string Name, string Age,string Email)
+        {
+            if (Name.Equals("") == true)
+            {
+                ModelState.AddModelError("Name", "Name is required!!");
+            }
+
+            if (Age.Equals("") == true)
+            {
+                ModelState.AddModelError("Age", "Age is required!!");
+            }
+
+            if (Email.Equals("") == true)
+            {
+                ModelState.AddModelError("Email", "Email is required!!");
+            }
+            return View();
+        }
+
+
+-----
+Note:
+-----
+=> If you want to display error message in red color
+then use Anonymous type method for changing color in Helper moethod.
+
+
+------------
+For Example:
+------------
+
+<!--Using Anonymous type method to change color of error message from black to red-->
+
+<p> @Html.ValidationSummary("", new
+{
+    @class = "text-danger"
+}) </p>
+
+<!-- Note: We left Validation Summary name empty because we don't need it
+and we cannot implement Anonymous Method without "over-loaded" version of Html Helper -->
+
+
+
+
+-----
+Note:
+-----
+
+=> If you want to display All error messages in red color as well as stars "*" on each empty field
+then use it.
+
+==============
+On Controller:
+==============
+
+    public class HomeController : Controller
+    {
+        
+        public ActionResult Index()
+        {                
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(string Name, string Age,string Email)
+        {
+            if (Name.Equals("")==true)
+            {
+                ModelState.AddModelError("Name", "Name is required!!");
+                ViewData["NameError"] = "*";
+            }
+
+            if (Age.Equals("") == true)
+            {
+                ModelState.AddModelError("Age", "Age is required!!");
+                ViewData["AgeError"] = "*";
+            }
+
+            if (Email.Equals("") == true)
+            {
+                ModelState.AddModelError("Email", "Email is required!!");
+                ViewData["EmailError"] = "*";
+            }
+            return View();
+        }
+
+
+================
+On Index.cshtml:
+================
+
+
+<p> @Html.ValidationSummary("", new
+{
+    @class = "text-danger"
+}) </p>
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+               <!--For Name-->
+    <p>Enter Name:  @Html.TextBox("Name")
+    <b style="color:red"> @ViewData["NameError"]  </b> </p>
+
+       
+               <!--For Age-->
+    <p>Enter Age:   @Html.TextBox("Age")
+    <b style="color:red"> @ViewData["AgeError"]   </b> </p>
+
+
+               <!--For Email-->
+    <p>Enter Email: @Html.TextBox("Email")
+    <b style="color:red"> @ViewData["EmailError"] </b> </p>
+
+               <!--For Button-->
+      <input type="submit" value="Submit"/>
+}
+
+
+
+

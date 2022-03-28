@@ -1,0 +1,29 @@
+
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>About</h2>
+<h2>This is about section</h2>
+
+<div class="container">
+    <div class="navbar-brand">
+
+        <span> @Html.ActionLink("Home", "Home","Home")</span>
+
+        <span> @Html.ActionLink("About", "About","Home")</span>
+
+        <span> @Html.ActionLink("Details", "Details","Home")</span>
+
+      @{ 
+          foreach (string item in (List<string>)ViewData["SportsList"])
+          {
+              <p>@item</p>
+          }
+      }
+
+
+
+    </div>
+</div>
+
