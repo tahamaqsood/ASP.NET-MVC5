@@ -1,0 +1,215 @@
+
+
+=====================================
+Inserting Images In CRUD Application:
+=====================================
+
+=> First create database in sql.
+
+
+create database Company
+use Company
+
+
+create table DepartmentTable
+(
+Dep_ID int primary key identity not null,
+Dep_Name varchar(50) not null
+)
+
+
+create table EmployeeTable
+(
+Emp_ID int primary key identity not null,
+Emp_Name varchar(50) not null,
+Emp_Age int not null,
+Emp_DOB date not null,
+Emp_Image varchar(max) not null,
+Emp_FK_ID int foreign key references DepartmentTable(Dep_ID) not null
+)
+select * from DepartmentTable
+select * from EmployeeTable
+
+
+
+
+=> Now go to Visual Studio 2015, Right Click on Content folder and add folder named img.
+Save some online images or copy them and paste it in img folder which exists in Content folder.
+
+
+=> Now, Right click on your model folder and Connect your Database with Visual Studio 
+through Ado.Net and build your project (Ctrl+shif+b).
+
+
+=> Now, Right click on Model and Add your custom Model class named "ModelView".
+
+
+=> Go to your Auto Generated model classes which named "EmployeeTable" and "DepartmentTable",
+copy all properties from both of your model classes and paste it in your custom made Model class
+named "ModelView". Now your ModelView Class will be look like this...
+
+================
+On ModelView.cs:
+================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace WebApplication1.Models
+{
+    public class ModelView
+    { 
+        public int Emp_ID { get; set; }
+
+        public string Emp_Name { get; set; }
+ 
+        public int Emp_Age { get; set; }
+ 
+        public System.DateTime Emp_DOB { get; set; }
+   
+        public string Emp_Image { get; set; }
+ 
+        public int Emp_FK_ID { get; set; }
+
+        public virtual DepartmentTable DepartmentTable { get; set; }
+  
+        public int Dep_ID { get; set; }
+ 
+        public string Dep_Name { get; set; }
+    }
+}
+
+
+=> Now Go to your Home Controller and make object of Context Class but before making object of
+context class, must add name space "using ProjectName.FolderName;"
+
+===================
+On Home Controller:
+===================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+namespace WebApplication1.Controllers
+{
+    public class HomeController : Controller
+    {
+        CompanyEntities obj = new CompanyEntities();
+        public ActionResult Index()
+        {
+            List<EmployeeTable> emp = obj.EmployeeTables.ToList();
+            List<ModelView> evmList = emp.Select(model => new ModelView
+            {
+               Emp_ID = model.Emp_ID,
+               Emp_Name = model.Emp_Name,
+               Emp_Age = model.Emp_Age,
+               Emp_DOB = model.Emp_DOB,
+               Emp_Image = model.Emp_Image,
+               Dep_ID = model.DepartmentTable.Dep_ID,
+               Dep_Name  = model.DepartmentTable.Dep_Name
+            }).ToList(); 
+            return View(evmList);
+        }
+
+
+=> Now Go to your Index View and Make it Strongly Typed view because we will access 
+Model Class properties in it.
+
+
+===============
+On Index.cshtm:
+===============
+
+@model IEnumerable<WebApplication1.Models.ModelView>
+
+
+<div>
+<table class="table table-responsive">
+
+
+        <tr>
+            <th>Employee Name</th>
+            <th>Employee Age</th>
+            <th>Employee DOB</th>
+            <th>Employee Department</th>
+            <th>Employee Image</th>
+            <th>Actions</th>
+        </tr>
+
+    
+        @if (Model!=null)
+        {
+            foreach (var i in Model)
+            {
+                <tr>
+                  <td>@i.Emp_Name</td>
+                  <td>@i.Emp_Age</td>
+                  <td>@i.Emp_DOB</td>
+                  <td class="text-center">@i.Dep_Name</td>
+
+                    <!--For Image-->
+                  <td><img src="@Url.Content(@i.Emp_Image)" width="50" height="50" /> </td>
+
+
+                    <!--Fourth Column For Actions-->
+             <td>
+            <!--For Edit Button-->
+            <a class="btn btn-primary btn-sm"   href="@Url.Action("Index", new { id = i.Emp_ID})">Edit</a>
+
+            <!--For Delete Button-->
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Index", new { id = i.Emp_ID})">Delete</a>
+
+            <!--For Detail Button-->
+            <a class="btn btn-success btn-sm" href="@Url.Action("Index", new { id = i.Emp_ID})">Detail</a>
+            </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center"> No records found!!  </td>
+            </tr>
+        }
+    
+</table>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
